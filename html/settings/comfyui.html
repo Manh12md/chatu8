@@ -1,0 +1,266 @@
+<div id="ch-tab-comfyui">
+    <div class="ch-prompts-section st-chatu8-settings-section">
+        <h3>Đã sửa lỗi nhắc nhở</h3>
+        <lớp div="st-chatu8-field">
+            <label for="yusheid_comfyui">Mặc định từ nhắc nhở</label>
+            <lớp div="st-chatu8-profile-controls">
+                <select id="yusheid_comfyui" class="st-chatu8-select"></select>
+                <button class="st-chatu8-icon-btn" id="st_chatu8_tishici_visual_select_comfyui" title="Lựa chọn trực quan"><i class="fa-solid fa-grip"></i></button>
+                <button class="st-chatu8-icon-btn" id="st_chatu8_tishici_update_style_comfyui" title="lưu lại"><i class="fa-solid fa-save"></i></button>
+                <button class="st-chatu8-icon-btn" id="st_chatu8_tishici_save_style_comfyui" title="lưu dưới dạng"><i class="fa-solid fa-file-export"></i></button>
+                <button class="st-chatu8-icon-btn" id="st_chatu8_tishici_export_current_comfyui" title="Xuất hiện tại"><i class="fa-solid fa-upload"></i></button>
+                <button class="st-chatu8-icon-btn" id="st_chatu8_tishici_export_all_comfyui" title="Xuất tất cả"><i class="fa-solid fa-file-export"></i></button>
+                <button class="st-chatu8-icon-btn" id="st_chatu8_tishici_import_comfyui" title="nhập khẩu"><i class="fa-solid fa-download"></i></button>
+                <button class="st-chatu8-icon-btn danger" id="st_chatu8_tishici_delete_style_comfyui" title="Xóa"><i class="fa-solid fa-trash"></i></button>
+            </div>
+        </div>
+        <div class="st-chatu8-field-col">
+            <label for="fixedPrompt_comfyui">Đã sửa các từ nhắc nhở tích cực <span class="st-chatu8-unsaved-warning" title="Cài đặt chưa được lưu" style="display: none;"><i class="fa-solid fa-triangle-exclamation"></i></span></label>
+            <button class="st-chatu8-icon-btn" id="translate_fixedPrompt_comfyui" title="Dịch" style="align-self: flex-end; margin: 4px 0;"><i class="fa-solid fa-language"></i></button>
+            <textarea id="fixedPrompt_comfyui" class="st-chatu8-textarea" rows="4"></textarea>
+            <div id="fixedPrompt_comfyui-results" class="ch-autocomplete-results"></div>
+        </div>
+        <div class="st-chatu8-field-col">
+            <label for="fixedPrompt_end_comfyui">Đăng các từ nhắc nhở tích cực cố định <span class="st-chatu8-unsaved-warning" title="Cài đặt chưa được lưu" style="display: none;"><i class="fa-solid fa-triangle-exclamation"></i></span></label>
+            <button class="st-chatu8-icon-btn" id="translate_fixedPrompt_end_comfyui" title="Dịch" style="align-self: flex-end; margin: 4px 0;"><i class="fa-solid fa-language"></i></button>
+            <textarea id="fixedPrompt_end_comfyui" class="st-chatu8-textarea" rows="4"></textarea>
+            <div id="fixedPrompt_end_comfyui-results" class="ch-autocomplete-results"></div>
+        </div>
+        <div class="st-chatu8-field-col">
+            <label for="negativePrompt_comfyui">Đã sửa các từ nhắc phủ định <span class="st-chatu8-unsaved-warning" title="Cài đặt chưa được lưu" style="display: none;"><i class="fa-solid fa-triangle-exclamation"></i></span></label>
+            <textarea id="negativePrompt_comfyui" class="st-chatu8-textarea" rows="4"></textarea>
+            <div id="negativePrompt_comfyui-results" class="ch-autocomplete-results"></div>
+        </div>
+        
+        <h3>LORA</h3>
+        <div class="st-chatu8-field">
+            <label for="ComfyuiLORA">Thêm LORA</label>
+            <lớp div="st-chatu8-profile-controls">
+                <select id="ComfyuiLORA" class="st-chatu8-select"></select>
+                <button class="st-chatu8-icon-btn" id="ComfyuiaddLORA" title="thêm"><i class="fa-solid fa-plus"></i></button>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="weilin_lora_fix">Báo cáo lỗi lora của phiên bản mới của nút weilin đã được sửa (tự động thêm cường độ từ kích hoạt 1)</label>
+            <chọn id="weilin_lora_fix" class="st-chatu8-select">
+                <option value="true">Bật</option>
+                <giá trị tùy chọn="false">Tắt</option>
+            </select>
+        </div>
+        
+    </div>
+    <lớp div="st-chatu8-settings-section">
+        <h3>Thay thế từ nhanh chóng</h3>
+
+        <lớp div="st-chatu8-field">
+            <label for="prompt_replace_id_comfyui">Thay thế từ nhanh chóng</label>
+            <lớp div="st-chatu8-profile-controls">
+                <select id="prompt_replace_id_comfyui" class="st-chatu8-select"></select>
+                <button class="st-chatu8-icon-btn" id="prompt_replace_update_style_comfyui" title="lưu lại"><i class="fa-solid fa-save"></i></button>
+                <button class="st-chatu8-icon-btn" id="prompt_replace_save_style_comfyui" title="lưu dưới dạng"><i class="fa-solid fa-file-export"></i></button>
+                <button class="st-chatu8-icon-btn" id="prompt_replace_export_current_comfyui" title="Xuất hiện tại"><i class="fa-solid fa-upload"></i></button>
+                <button class="st-chatu8-icon-btn" id="prompt_replace_export_all_comfyui" title="Xuất tất cả"><i class="fa-solid fa-file-export"></i></button>
+                <button class="st-chatu8-icon-btn" id="prompt_replace_import_comfyui" title="nhập khẩu"><i class="fa-solid fa-download"></i></button>
+                <button class="st-chatu8-icon-btn danger" id="prompt_replace_delete_style_comfyui" title="Xóa"><i class="fa-solid fa-trash"></i></button>
+            </div>
+        </div>
+        <div class="st-chatu8-field-col">
+            <label for="prompt_replace_text_comfyui">Quy tắc thay thế <span class="st-chatu8-unsaved-warning" title="Cài đặt chưa được lưu" style="display: none;"><i class="fa-solid fa-triangle-exclamation"></i></span></label>
+            <textarea id="prompt_replace_text_comfyui" class="st-chatu8-textarea" rows="4"></textarea>
+        </div>
+    </div>
+    <div class="st-chatu8-settings-section"> 
+        <div class="st-chatu8-field">
+            <label for="AQT_comfyui">Chất lượng mặt trước mặc định</label>
+            <chọn id="AQT_comfyui" class="st-chatu8-select">
+                <option value="best quality, amazing quality, very aesthetic, absurdres">Bật</option>
+                <giá trị tùy chọn="">Tắt</option>
+            </select>
+        </div>
+        <lớp div="st-chatu8-field">
+            <label for="UCP_comfyui">Mặc định chất lượng âm</label>
+            <chọn id="UCP_comfyui" class="st-chatu8-select">
+<option value="">Không có</option>
+<giá trị tùy chọn="bad proportions, out of focus, username, text, bad anatomy, lowres, worstquality, watermark, cropped, bad body, deformed, mutated, disfigured, poorly drawn face, malformed hands, extra arms, extra limb, missing limb, too many fingers, extra legs, bad feet, missing fingers, fused fingers, acnes, floating limbs, disconnected limbs, long neck, long body, mutation, ugly, blurry, low quality, sketches, normal quality, monochrome, grayscale, signature, logo, jpeg artifacts, unfinished, displeasing, chromatic aberration, extra digits, artistic error, scan, abstract, photo, realism, screencap">Mặc định của tác giả</option>
+<giá trị tùy chọn="negativeXL_D, negativeXL, source_furry, extra limbs, deformations, long fingers, fused fingers, inaccurate_anatomy, bad proportions, poorly drawn hands, bad hands, extra_fingers, extra_hand, extra_arm, distorted fingers, ugly hands, creepy hands, six fingers, malformed fingers, long_fingers, interlocked fingers:1.2, ugly, deformed, uneven, asymmetrical, unnatural, missing fingers, extra digit, fewer digits, opaque eyes, small eyes, ugly eyes, blurred eyes, bad face, (bad anatomy, ugly face:1.2), (worst quality, low quality, not detailed, low resolution:1.2), motion_blur, blur, blur_censor, blurry, simple_background, text, error, cropped, normal quality, jpeg artifacts, watermark, logo, signature, username, artist name">Tác giả đặt trước 2</option>
+            </select>
+        </div>
+    </div>
+    <lớp div="st-chatu8-settings-section">
+        <h3>Tệp cấu hình</h3>
+        <lớp div="st-chatu8-field">
+            <label for="comfyui_profile_id">Cấu hình hiện tại</label>
+            <lớp div="st-chatu8-profile-controls">
+                <select id="comfyui_profile_id" class="st-chatu8-select"></select>
+                <button class="st-chatu8-icon-btn" id="comfyui_profile_load" title="đọc">
+                    <i class="fa-solid fa-folder-open"></i>
+                </button>
+                <button class="st-chatu8-icon-btn" id="comfyui_profile_new" title="Mới">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+                <button class="st-chatu8-icon-btn danger" id="comfyui_profile_delete" title="Xóa">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="st-chatu8-settings-section">
+        <h3>Quy trình làm việc</h3>
+        <lớp div="st-chatu8-field">
+            <label for="workerid">Cài đặt trước quy trình làm việc</label>
+            <lớp div="st-chatu8-profile-controls">
+                <select id="workerid" class="st-chatu8-select"></select>
+                <button class="st-chatu8-icon-btn" id="worker_update_style" title="lưu lại"><i class="fa-solid fa-save"></i></button>
+                <button class="st-chatu8-icon-btn" id="worker_save_style" title="lưu dưới dạng"><i class="fa-solid fa-file-export"></i></button>
+                <button class="st-chatu8-icon-btn" id="worker_export_current" title="Xuất hiện tại"><i class="fa-solid fa-upload"></i></button>
+                <button class="st-chatu8-icon-btn" id="worker_export_all" title="Xuất tất cả"><i class="fa-solid fa-file-export"></i></button>
+                <button class="st-chatu8-icon-btn" id="worker_import" title="nhập khẩu"><i class="fa-solid fa-download"></i></button>
+                <button class="st-chatu8-icon-btn danger" id="worker_delete_style" title="Xóa"><i class="fa-solid fa-trash"></i></button>
+            </div>
+        </div>
+        <div class="st-chatu8-field-col">
+            <label for="worker">Quy trình làm việc (JSON)</label>
+            <id vùng văn bản="worker" class="st-chatu8-textarea" rows="5"></textarea>
+            <div style="display: flex; gap: 10px; align-self: flex-end; margin-top: 10px;">
+                <button id="eidtwork" class="st-chatu8-btn">Dễ dàng sửa đổi</button>
+                <id nút="visualize_workflow" class="st-chatu8-btn"><i class="fa-solid fa-diagram-project"></i>Trực quan hóa</button>
+            </div>
+        </div>
+    </div>
+    <lớp div="st-chatu8-settings-section">
+        <h3>Mặc định chỉnh sửa ảnh</h3>
+        <lớp div="st-chatu8-field">
+            <label for="editWorkerid">Mặc định quy trình chỉnh sửa ảnh</label>
+            <lớp div="st-chatu8-profile-controls">
+                <select id="editWorkerid" class="st-chatu8-select"></select>
+                <button class="st-chatu8-icon-btn" id="edit_worker_update_style" title="lưu lại"><i class="fa-solid fa-save"></i></button>
+                <button class="st-chatu8-icon-btn" id="edit_worker_save_style" title="lưu dưới dạng"><i class="fa-solid fa-file-export"></i></button>
+                <button class="st-chatu8-icon-btn" id="edit_worker_export_current" title="Xuất hiện tại"><i class="fa-solid fa-upload"></i></button>
+                <button class="st-chatu8-icon-btn" id="edit_worker_export_all" title="Xuất tất cả"><i class="fa-solid fa-file-export"></i></button>
+                <button class="st-chatu8-icon-btn" id="edit_worker_import" title="nhập khẩu"><i class="fa-solid fa-download"></i></button>
+                <button class="st-chatu8-icon-btn danger" id="edit_worker_delete_style" title="Xóa"><i class="fa-solid fa-trash"></i></button>
+            </div>
+        </div>
+        <div class="st-chatu8-field-col">
+            <label for="editWorker">Quy trình chỉnh sửa ảnh (JSON)</label>
+            <id vùng văn bản="editWorker" class="st-chatu8-textarea" rows="5"></textarea>
+        </div>
+    </div>
+    <div class="st-chatu8-settings-section">
+        <h3>Cài đặt giao diện người dùng thoải mái</h3>
+        <lớp div="st-chatu8-field">
+            <label for="comfyuiUrl">Địa chỉ API</label>
+            <lớp div="st-chatu8-input-group">
+                <i class="fa-solid fa-exclamation-triangle st-chatu8-url-warning-icon" title="Định dạng URL không hợp lệ"></i>
+                <input type="text" id="comfyuiUrl" class="st-chatu8-text-input" placeholder="http://127.0.0.1:8188">
+                <button id="testComfyui" class="st-chatu8-btn">Kết nối để làm mới dữ liệu</button>
+            </div>
+        </div>
+    </div>
+    <lớp div="st-chatu8-settings-section">
+        <h4>Cài đặt khác</h4>
+        <lớp div="st-chatu8-field">
+            <label for="MODEL_NAME">Tệp mẫu</label>
+            <chọn id="MODEL_NAME" class="st-chatu8-select"></select>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="comfyuisamplerName">Phương pháp lấy mẫu</label>
+            <chọn id="comfyuisamplerName" class="st-chatu8-select"></select>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="comfyui_vae">VAE</label>
+            <select id="comfyui_vae" class="st-chatu8-select"></select>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="comfyui_scheduler">Bộ lập lịch</label>
+            <chọn id="comfyui_scheduler" class="st-chatu8-select"></select>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="comfyuiCLIPName">CLIP</label>
+            <select id="comfyuiCLIPName" class="st-chatu8-select"></select>
+        </div>
+    </div>
+    <div class="st-chatu8-settings-section">
+        <h4>T���o tham số</h4>
+        <lớp div="st-chatu8-grid">
+            <div class="st-chatu8-field">
+                <label for="comfyui_size">Kích thước mặc định</label>
+                <chọn id="comfyui_size" class="st-chatu8-select">
+                    <option value="512x512">512x512 (1:1, biểu tượng)</option>
+                    <giá trị tùy chọn="640x640">640x640 (1:1, biểu tượng)</option>
+                    <giá trị tùy chọn="512x768">512x768 (2:3, dọc)</option>
+                    <giá trị tùy chọn="768x512">768x512 (3:2, ngang)</option>
+                    <giá trị tùy chọn="1024x1024">1024x1024 (1:1, SDXL)</option>
+                    <option value="1216x832">1216x832 (19:13, Ultra HD)</option>
+                    <giá trị tùy chọn="832x1216">832x1216 (13:19, Ultra HD)</option>
+                </select>
+            </div>
+            <lớp div="st-chatu8-field">
+                <label for="comfyui_width">Chiều rộng</nhãn>
+                <loại đầu vào="number" id="comfyui_width" class="st-chatu8-text-input">
+            </div>
+            <div class="st-chatu8-field">
+                <label for="comfyui_height">Chiều cao</label>
+                <loại đầu vào="number" id="comfyui_height" class="st-chatu8-text-input">
+            </div>
+            <div class="st-chatu8-field">
+                <label for="comfyui_steps">Tạo các bước (bước)</label>
+                <loại đầu vào="number" id="comfyui_steps" class="st-chatu8-text-input">
+            </div>
+            <div class="st-chatu8-field">
+                <label for="comfyui_seed">Hạt giống</nhãn>
+                <loại đầu vào="number" id="comfyui_seed" class="st-chatu8-text-input">
+            </div>
+            <div class="st-chatu8-field">
+                <label for="cfg_comfyui">CFG</label>
+                <input type="number" id="cfg_comfyui" class="st-chatu8-text-input">
+            </div>
+        </div>
+    </div>
+
+     <div class="st-chatu8-settings-section">
+        <h3>Hình ảnh tham khảo</h3>
+        <lớp div="st-chatu8-field-col">
+            <label>Xem trước ảnh</label>
+            <div id="comfyui-image-preview-container" class="st-chatu8-image-preview-container">
+                <div class="st-chatu8-image-placeholder">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Không có ảnh nào được chọn</span>
+                </div>
+                <img id="previewImage2" src="" alt="Xem trước hình ảnh tham khảo">
+            </div>
+            <div class="st-chatu8-image-controls">
+                <input type="file" id="imageInput2" accept="image/*" style="display:none;">
+                <button type="button" class="st-chatu8-btn" id="comfyui-select-image-btn"><i class="fa-solid fa-upload"></i> Chọn hình ảnh</button>
+                <loại nút="button" class="st-chatu8-btn danger" id="comfyui-remove-image-btn" style="display: none;"><i class="fa-solid fa-trash"></i> Xóa hình ảnh</button>
+            </div>
+        </div>
+        <lớp div="st-chatu8-field">
+            <label for="ipa">Loại IPA</label>
+            <chọn id="ipa" class="st-chatu8-select">
+                <option>STANDARD (medium strength)</option>
+                <option>LIGHT - SD1.5 only (low strength)</option>
+                <option>VIT-G (medium strength)</option>
+                <option>PLUS (high strength)</option>
+                <option>PLUS FACE (portraits)</option>
+                <option>FULL FACE - SD1.5 only (portraits stronger)</option>
+            </select>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="c_fenwei">Cường độ khí quyển</label>
+            <loại đầu vào="number" id="c_fenwei" class="st-chatu8-text-input">
+        </div>
+        <div class="st-chatu8-field">
+            <label for="c_xijie">Cường độ chi tiết</label>
+            <loại đầu vào="number" id="c_xijie" class="st-chatu8-text-input">
+        </div>
+        <div class="st-chatu8-field">
+            <label for="c_quanzhong">Trọng lượng</label>
+            <loại đầu vào="number" id="c_quanzhong" class="st-chatu8-text-input">
+        </div>
+        <div class="st-chatu8-field">
+            <label for="c_idquanzhong">Trọng lượng FaceID</label>
+            <loại đầu vào="number" id="c_idquanzhong" class="st-chatu8-text-input">
+        </div>
+    </div>
+</div>

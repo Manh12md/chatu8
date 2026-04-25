@@ -1,0 +1,45 @@
+<div class="st-chatu8-settings-section">
+    <div class="st-chatu8-flex-container">
+        <!-- Bên trái: Sách thế giới -->
+        <lớp div="st-chatu8-worldbook-container">
+            <div class="st-chatu8-list-header">
+                <h3>📚 Sách thế giới</h3>
+                <lớp div="st-chatu8-field">
+                    <input type="text" id="ch-send-data-world-search" class="st-chatu8-text-input" placeholder="Tìm kiếm...">
+                </div>
+                <div class="st-chatu8-batch-buttons" style="display: flex; gap: 8px; margin-top: 8px;">
+                    <button id="ch-send-data-refresh-worlds" class="st-chatu8-batch-button" style="flex: 1;">
+                        <i class="fa fa-refresh"></i> Làm mới sách thế giới
+                    </button>
+                    <id nút="ch-send-data-test-trigger" class="st-chatu8-batch-button" style="flex: 1; background: rgba(76, 175, 80, 0.2); border-color: rgba(76, 175, 80, 0.4);">
+                        <i class="fa fa-flask"></i>Trình kích hoạt thử nghiệm
+                    </button>
+                </div>
+            </div>
+            <div id="ch-send-data-world-list" class="st-chatu8-scroll-list">
+                <!-- JS sẽ xuất hiện ở đây -->
+            </div>
+        </div>
+
+        <!-- Bên phải: các mục -->
+        <lớp div="st-chatu8-entry-container">
+            <div class="st-chatu8-list-header">
+                <h3>📝 Công tắc đầu vào</h3>
+                <lớp div="st-chatu8-field">
+                    <input type="text" id="ch-send-data-entry-search" class="st-chatu8-text-input" placeholder="Tìm kiếm...">
+                </div>
+                <div class="st-chatu8-batch-buttons" style="display: flex; gap: 8px; margin-top: 8px;">
+                    <button id="ch-send-data-select-all" class="st-chatu8-batch-button" style="flex: 1;">Chọn tất cả</button>
+                    <id nút="ch-send-data-deselect-all" class="st-chatu8-batch-button" style="flex: 1;">Hủy chọn tất cả</button>
+                </div>
+                <div id="ch-send-data-new-entry-buttons" class="st-chatu8-new-entry-buttons" style="display: none; gap: 8px; margin-top: 8px;">
+                    <button id="ch-send-data-enable-new-entries" class="st-chatu8-new-entry-btn" style="flex: 1;">Bật tất cả các mục mới</button>
+                    <id nút="ch-send-data-disable-new-entries" class="st-chatu8-new-entry-btn" style="flex: 1;">Tắt tất cả các mục mới</button>
+                </div>
+            </div>
+            <div id="ch-send-data-entry-list" class="st-chatu8-scroll-list">
+                <!-- JS sẽ điền vào đây -->
+            </div>
+        </div>
+    </div>
+</div>

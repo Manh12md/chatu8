@@ -1,0 +1,356 @@
+<div id="ch-tab-novelai">
+    <div class="ch-prompts-section st-chatu8-settings-section">
+        <h3>Đã sửa lỗi nhắc nhở</h3>
+        <lớp div="st-chatu8-field">
+            <label for="yusheid_novelai">Mặc định từ nhắc nhở</label>
+            <lớp div="st-chatu8-profile-controls">
+                <select id="yusheid_novelai" class="st-chatu8-select"></select>
+                <button class="st-chatu8-icon-btn" id="st_chatu8_tishici_visual_select_novelai" title="Lựa chọn trực quan"><i class="fa-solid fa-grip"></i></button>
+                <button class="st-chatu8-icon-btn" id="st_chatu8_tishici_update_style_novelai" title="lưu lại"><i class="fa-solid fa-save"></i></button>
+                <button class="st-chatu8-icon-btn" id="st_chatu8_tishici_save_style_novelai" title="lưu dưới dạng"><i class="fa-solid fa-file-export"></i></button>
+                <button class="st-chatu8-icon-btn" id="st_chatu8_tishici_export_current_novelai" title="Xuất hiện tại"><i class="fa-solid fa-upload"></i></button>
+                <button class="st-chatu8-icon-btn" id="st_chatu8_tishici_export_all_novelai" title="Xuất tất cả"><i class="fa-solid fa-file-export"></i></button>
+                <button class="st-chatu8-icon-btn" id="st_chatu8_tishici_import_novelai" title="nhập khẩu"><i class="fa-solid fa-download"></i></button>
+                <button class="st-chatu8-icon-btn danger" id="st_chatu8_tishici_delete_style_novelai" title="Xóa"><i class="fa-solid fa-trash"></i></button>
+            </div>
+        </div>
+        <div class="st-chatu8-field-col">
+            <label for="fixedPrompt_novelai">Đã sửa các từ nhắc nhở tích cực <span class="st-chatu8-unsaved-warning" title="Cài đặt chưa được lưu" style="display: none;"><i class="fa-solid fa-triangle-exclamation"></i></span></label>
+            <button class="st-chatu8-icon-btn" id="translate_fixedPrompt_novelai" title="Dịch" style="align-self: flex-end; margin: 4px 0;"><i class="fa-solid fa-language"></i></button>
+            <textarea id="fixedPrompt_novelai" class="st-chatu8-textarea" rows="4"></textarea>
+            <div id="fixedPrompt_novelai-results" class="ch-autocomplete-results"></div>
+        </div>
+        <div class="st-chatu8-field-col">
+            <label for="fixedPrompt_end_novelai">Đăng các từ nhắc nhở tích cực cố định <span class="st-chatu8-unsaved-warning" title="Cài đặt chưa được lưu" style="display: none;"><i class="fa-solid fa-triangle-exclamation"></i></span></label>
+            <button class="st-chatu8-icon-btn" id="translate_fixedPrompt_end_novelai" title="Dịch" style="align-self: flex-end; margin: 4px 0;"><i class="fa-solid fa-language"></i></button>
+            <textarea id="fixedPrompt_end_novelai" class="st-chatu8-textarea" rows="4"></textarea>
+            <div id="fixedPrompt_end_novelai-results" class="ch-autocomplete-results"></div>
+        </div>
+        <div class="st-chatu8-field-col">
+            <label for="negativePrompt_novelai">Đã sửa các từ nhắc phủ định <span class="st-chatu8-unsaved-warning" title="Cài đặt chưa được lưu" style="display: none;"><i class="fa-solid fa-triangle-exclamation"></i></span></label>
+            <textarea id="negativePrompt_novelai" class="st-chatu8-textarea" rows="4"></textarea>
+            <div id="negativePrompt_novelai-results" class="ch-autocomplete-results"></div>
+        </div>
+
+    </div>
+    <div class="st-chatu8-settings-section">
+        <h3>Thay thế từ nhanh chóng</h3>
+        <lớp div="st-chatu8-field">
+            <label for="prompt_replace_id_novelai">Thay thế từ nhanh chóng</label>
+            <lớp div="st-chatu8-profile-controls">
+                <select id="prompt_replace_id_novelai" class="st-chatu8-select"></select>
+                <button class="st-chatu8-icon-btn" id="prompt_replace_update_style_novelai" title="lưu lại"><i class="fa-solid fa-save"></i></button>
+                <button class="st-chatu8-icon-btn" id="prompt_replace_save_style_novelai" title="lưu dưới dạng"><i class="fa-solid fa-file-export"></i></button>
+                <button class="st-chatu8-icon-btn" id="prompt_replace_export_current_novelai" title="Xuất hiện tại"><i class="fa-solid fa-upload"></i></button>
+                <button class="st-chatu8-icon-btn" id="prompt_replace_export_all_novelai" title="Xuất tất cả"><i class="fa-solid fa-file-export"></i></button>
+                <button class="st-chatu8-icon-btn" id="prompt_replace_import_novelai" title="nhập khẩu"><i class="fa-solid fa-download"></i></button>
+                <button class="st-chatu8-icon-btn danger" id="prompt_replace_delete_style_novelai" title="Xóa"><i class="fa-solid fa-trash"></i></button>
+            </div>
+        </div>
+        <div class="st-chatu8-field-col">
+            <label for="prompt_replace_text_novelai">Quy tắc thay thế <span class="st-chatu8-unsaved-warning" title="Cài đặt chưa được lưu" style="display: none;"><i class="fa-solid fa-triangle-exclamation"></i></span></label>
+            <textarea id="prompt_replace_text_novelai" class="st-chatu8-textarea" rows="4"></textarea>
+        </div>
+    </div>
+        <div class="st-chatu8-settings-section"> 
+        <div class="st-chatu8-field">
+            <label for="addFurryDataset">Thêm tập dữ liệu Furui</label>
+            <chọn id="addFurryDataset" class="st-chatu8-select">
+                <option value="true">Bật</option>
+                <giá trị tùy chọn="false" selected="">Tắt</option>
+            </select>
+        </div>
+        <lớp div="st-chatu8-field">
+            <label for="AQT_novelai">Chất lượng mặt trước mặc định</label>
+            <chọn id="AQT_novelai" class="st-chatu8-select">
+                <option value="best quality, amazing quality, very aesthetic, absurdres">Bật</option>
+                <giá trị tùy chọn="">Tắt</option>
+            </select>
+        </div>
+        <lớp div="st-chatu8-field">
+            <label for="UCP_novelai">Mặc định chất lượng âm</label>
+            <chọn id="UCP_novelai" class="st-chatu8-select">
+            </select>
+        </div>
+    </div>
+    <div class="st-chatu8-settings-section">
+        <h3>Tệp cấu hình</h3>
+        <lớp div="st-chatu8-field">
+            <label for="novelai_profile_id">Cấu hình hiện tại</label>
+            <lớp div="st-chatu8-profile-controls">
+                <select id="novelai_profile_id" class="st-chatu8-select"></select>
+                <button class="st-chatu8-icon-btn" id="novelai_profile_load" title="đọc">
+                    <i class="fa-solid fa-folder-open"></i>
+                </button>
+                <button class="st-chatu8-icon-btn" id="novelai_profile_new" title="Mới">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+                <button class="st-chatu8-icon-btn danger" id="novelai_profile_delete" title="Xóa">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="st-chatu8-settings-section">
+        <h3>Cài đặt NovelAI</h3>
+        <lớp div="st-chatu8-field-col">
+            <label for="novelaiApi">NovelAI API</label>
+            <div style="position: relative; display: flex; align-items: center;">
+                <input type="password" id="novelaiApi" class="st-chatu8-text-input" style="padding-right: 2.2em;">
+                <button type="button" id="novelaiApiToggle" title="Hiển thị/ẩn Khóa API" style="position: absolute; right: 0.4em; background: none; border: none; cursor: pointer; color: inherit; opacity: 0.6; padding: 0; font-size: 1em; line-height: 1;">
+                    <i class="fa-solid fa-eye"></i>
+                </button>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="novelaisite">trang web</nhãn>
+            <chọn id="novelaisite" class="st-chatu8-select">
+                <option>Trang web chính thức</option>
+                <option>Các trang web khác</option>
+            </select>
+        </div>
+        <lớp div="st-chatu8-field" id="novelai-other-site-field">
+            <label for="novelaiOtherSite">Các trang web tiểu thuyết khác</label>
+            <loại đầu vào="text" id="novelaiOtherSite" class="st-chatu8-text-input">
+        </div>
+        <div class="st-chatu8-field">
+            <label for="enableCloudQueue">Bật hàng đợi đám mây</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="enableCloudQueue" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field" id="cloud-queue-url-field">
+            <label for="cloudQueueUrl">Địa chỉ dịch vụ xếp hàng</label>
+            <loại đầu vào="text" id="cloudQueueUrl" class="st-chatu8-text-input" placeholder="https://xxx.hf.space">
+        </div>
+        <div class="st-chatu8-field" id="cloud-queue-greeting-field">
+            <label for="cloudQueueGreeting">Xếp hàng các cụm từ cá nhân (15 từ)</label>
+            <loại đầu vào="text" id="cloudQueueGreeting" class="st-chatu8-text-input" placeholder="Đang được tạo ra~" maxlength="15">
+        </div>
+        <div class="st-chatu8-field">
+            <label for="showQueueGreeting">Hiển thị lời nói cá nhân của người khác</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="showQueueGreeting" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="novelaimode">Mô hình</label>
+            <chọn id="novelaimode" class="st-chatu8-select">
+                <option>nai-diffusion-3</option>
+                <option>nai-diffusion-4-full</option>
+                <option>nai-diffusion-4-curated-preview</option>
+                <option>nai-diffusion-4-5-curated</option>
+                <option>nai-diffusion-4-5-full</option>
+            </select>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="novelai_sampler">Phương pháp lấy mẫu</label>
+            <chọn id="novelai_sampler" class="st-chatu8-select">
+                <option value="k_euler">Euler</option>
+                <option value="ddim_v3">DDIM</option>
+                <option value="k_dpmpp_2s_ancestral"> DPM++ 2S Ancestral</option>
+                <option value="k_dpmpp_2m">DPM++ 2M</option>
+                <option value="k_euler_ancestral"> Euler Ancestral</option>
+                <option value="k_dpmpp_2m_sde">DPM++ 2M SDE</option>
+                <option value="k_dpmpp_sde">DPM++ SDE</option>
+            </select>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="Schedule">Bảng tiếng ồn</label>
+            <chọn id="Schedule" class="st-chatu8-select">
+                <option>native</option>
+                <option>exponential</option>
+                <option>polyexponential</option>
+                <option>karras</option>
+            </select>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="nai3Scale">Prompt Guidance</label>
+            <input type="number" id="nai3Scale" class="st-chatu8-text-input">
+        </div>
+        <div class="st-chatu8-field">
+            <label for="cfg_rescale">Prompt Guidance Rescale</label>
+            <input type="number" id="cfg_rescale" class="st-chatu8-text-input">
+        </div>
+        <div class="st-chatu8-field">
+            <label for="AI_use_coords">Vị trí ký tự mặc định của AI</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="AI_use_coords" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field" id="st-chatu8-nai3-sm-field">
+            <label for="sm">SMEA</label>
+            <div class="st-chatu8-toggle">
+                <input id="sm" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field" id="st-chatu8-nai3-dyn-field">
+            <label for="dyn">SMEA DYN</label>
+            <div class="st-chatu8-toggle">
+                <input id="dyn" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="nai3Variety">Sự đa dạng</nhãn>
+            <lớp div="st-chatu8-toggle">
+                <input id="nai3Variety" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field" id="st-chatu8-nai3-deceisp-field">
+            <label for="nai3Deceisp">Giải thích</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="nai3Deceisp" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+    </div>
+    <div class="st-chatu8-settings-section">
+        <h4>T���o tham số</h4>
+        <lớp div="st-chatu8-grid">
+            <div class="st-chatu8-field">
+                <label for="novelai_size">Kích thước mặc định</label>
+                <chọn id="novelai_size" class="st-chatu8-select">
+                    <option value="512x512">512x512 (1:1, biểu tượng)</option>
+                    <giá trị tùy chọn="640x640">640x640 (1:1, biểu tượng)</option>
+                    <giá trị tùy chọn="512x768">512x768 (2:3, dọc)</option>
+                    <giá trị tùy chọn="768x512">768x512 (3:2, ngang)</option>
+                    <giá trị tùy chọn="1024x1024">1024x1024 (1:1, SDXL)</option>
+                    <option value="1216x832">1216x832 (19:13, Ultra HD)</option>
+                    <giá trị tùy chọn="832x1216">832x1216 (13:19, Ultra HD)</option>
+                </select>
+            </div>
+            <lớp div="st-chatu8-field">
+                <label for="novelai_width">Chiều rộng</nhãn>
+                <loại đầu vào="number" id="novelai_width" class="st-chatu8-text-input">
+            </div>
+            <div class="st-chatu8-field">
+                <label for="novelai_height">Chiều cao</label>
+                <loại đầu vào="number" id="novelai_height" class="st-chatu8-text-input">
+            </div>
+            <div class="st-chatu8-field">
+                <label for="novelai_steps">Tạo các bước (bước)</label>
+                <loại đầu vào="number" id="novelai_steps" class="st-chatu8-text-input">
+            </div>
+            <div class="st-chatu8-field">
+                <label for="novelai_seed">Hạt giống</nhãn>
+                <loại đầu vào="number" id="novelai_seed" class="st-chatu8-text-input">
+            </div>
+        </div>
+    </div>
+    <div class="st-chatu8-settings-section" id="nai-vibe-transfer-section">
+        <h3>Chuyển Vibe (Chuyển Vibe)</h3>
+        <lớp div="st-chatu8-field">
+            <label for="nai3VibeTransfer">Bật tham chiếu bầu không khí</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="nai3VibeTransfer" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field-col">
+            <label>Xem trước ảnh</label>
+            <div id="novelai-image-preview-container" class="st-chatu8-image-preview-container">
+                <div class="st-chatu8-image-placeholder">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Không có ảnh nào được chọn</span>
+                </div>
+                <img id="previewImage_novelai" src="" alt="Xem trước hình ảnh tham khảo">
+            </div>
+            <div class="st-chatu8-image-controls">
+                <input type="file" id="imageInput_novelai" accept="image/*" style="display:none;">
+                <button type="button" class="st-chatu8-btn" id="novelai-select-image-btn"><i class="fa-solid fa-upload"></i> Chọn hình ảnh</button>
+                <loại nút="button" class="st-chatu8-btn danger" id="novelai-remove-image-btn" style="display: none;"><i class="fa-solid fa-trash"></i> Xóa hình ảnh</button>
+            </div>
+        </div>
+        <lớp div="st-chatu8-field">
+            <label for="InformationExtracted">Thông tin trích xuất môi trường xung quanh</label>
+            <lớp div="st-chatu8-range-container">
+                <input type="range" id="InformationExtracted_range" class="st-chatu8-range-slider" min="0" max="1" step="0.01">
+                <input type="number" id="InformationExtracted" class="st-chatu8-range-input" min="0" max="1" step="0.01">
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="ReferenceStrength">Cường độ khí quyển</label>
+            <lớp div="st-chatu8-range-container">
+                <input type="range" id="ReferenceStrength_range" class="st-chatu8-range-slider" min="0" max="1" step="0.01">
+                <input type="number" id="ReferenceStrength" class="st-chatu8-range-input" min="0" max="1" step="0.01">
+            </div>
+        </div>
+    </div>
+    <div class="st-chatu8-settings-section" id="nai-char-ref-section">
+        <h3>Cài đặt hình ảnh tham chiếu ký tự</h3>
+        <lớp div="st-chatu8-field">
+            <label for="nai3CharRef">Bật tham chiếu vai trò</label>
+            <lớp div="st-chatu8-toggle" title="Nó không được khuyến khích sử dụng nó. Mỗi bức ảnh tham khảo bổ sung sẽ khiến bạn mất thêm 5 điểm và bạn sẽ bị tính phí một lần cho mỗi bức ảnh!">
+                <input id="nai3CharRef" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label>Quản lý bản đồ tham chiếu ký tự</label>
+            <kiểu div="max-width: 420px; flex-grow: 1;">
+                <button type="button" class="st-chatu8-btn" id="novelai-char-ref-upload-btn">
+                    <i class="fa-solid fa-upload"></i>Mở Thêm hình ảnh tham khảo
+                </button>
+                <phong cách nhỏ="display: block; margin-top: 8px; color: #888; font-size: 0.85em;">
+                    Tải hình ảnh tham khảo nhân vật lên thư viện
+                </nhỏ>
+            </div>
+        </div>
+        <l���p div="st-chatu8-field">
+            <label>Quản lý nhóm vai trò</label>
+            <kiểu div="max-width: 420px; flex-grow: 1;">
+                <button type="button" class="st-chatu8-btn" id="novelai-char-ref-group-editor-btn" title="Cài đặt trước nhóm tham chiếu vai trò quản lý">
+                    <i class="fa-solid fa-layer-group"></i>Chỉnh sửa nhóm nhân vật
+                </button>
+                <phong cách nhỏ="display: block; margin-top: 8px; color: #888; font-size: 0.85em;">
+                    Tạo và quản lý các cài đặt trước kết hợp có tối đa 4 tham chiếu ký tự
+                </nhỏ>
+            </div>
+        </div>
+    </div>
+    <lớp div="st-chatu8-settings-section">
+        <h3>Cài đặt chuyển môi trường xung quanh</h3>
+        <lớp div="st-chatu8-field">
+            <label>Trình tạo tệp Vibe</label>
+            <kiểu div="max-width: 420px; flex-grow: 1;">
+                <button type="button" class="st-chatu8-btn" id="novelai-vibe-generator-btn">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>Mở trình tạo Vibe
+                </button>
+                <phong cách nhỏ="display: block; margin-top: 8px; color: #888; font-size: 0.85em;">
+                    Tạo các tệp .naiv4vibe tương thích chính thức, có thể được nhập trực tiếp vào trang web chính thức của NovelAI để sử dụng.
+                </nhỏ>
+            </div>
+        </div>
+        <lớp div="st-chatu8-field">
+            <label>Quản lý nhóm Vibe</label>
+            <kiểu div="max-width: 420px; flex-grow: 1;">
+                <button type="button" class="st-chatu8-btn" id="novelai-vibe-group-editor-btn" title="Quản lý cài đặt trước của nhóm Vibe">
+                    <i class="fa-solid fa-layer-group"></i> Biên tập nhóm Vibe
+                </button>
+                <phong cách nhỏ="display: block; margin-top: 8px; color: #888; font-size: 0.85em;">
+                    Tạo và quản lý các cài đặt trước kết hợp lên đến 4 rung cảm
+                </nhỏ>
+            </div>
+        </div>
+        <lớp div="st-chatu8-field">
+            <label for="enableVibeGroupTransfer">Bật Vibe Group Vibe Transfer</label>
+            <lớp div="st-chatu8-toggle" title="Sử dụng Nhóm Vibe để thay đổi tâm trạng, với tối đa 4 rung cảm có sẵn cùng một lúc. Khi được bật sẽ tự động vô hiệu hóa việc chuyển rung cảm riêng lẻ.">
+                <input id="enableVibeGroupTransfer" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="normalizeRefStrength">Normalize Reference Strength Values</label>
+            <div class="st-chatu8-toggle" title="Giá trị cường độ tham chiếu chuẩn hóa. Khi được bật, các giá trị cường độ của từng rung cảm trong nhóm rung cảm sẽ tự động được chuẩn hóa để chúng có tổng bằng 1,0.">
+                <input id="normalizeRefStrength" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+<div id="ch-tab-fab">
+    <div class="st-chatu8-settings-section">
+        <h3>Cài đặt bóng treo</h3>
+        <lớp div="st-chatu8-field">
+            <label for="enable_chatu8_fab">Bật bóng nổi</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="enable_chatu8_fab" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="enable_chatu8_fab_video">Bật hình đại diện video</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="enable_chatu8_fab_video" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field" id="fab-desktop-pet-settings">
+            <label for="enable_chatu8_desktop_pet">Cửa sổ độc lập Chiehime</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="enable_chatu8_desktop_pet" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+            <p class="st-chatu8-hint" style="font-size: 12px; color: #888; margin-top: 4px;">
+                Đưa ký tự Chieji vào cửa sổ hình trong ảnh nhỏ và luôn hiển thị trên đầu các ứng dụng khác (chế độ xem thuần túy, không tương tác)
+            </p>
+        </div>
+        <lớp div="st-chatu8-field" id="fab-traditional-settings">
+            <div class="st-chatu8-field">
+                <label for="chatu8_fab_theme">Mặc định chủ đề</label>
+                <chọn id="chatu8_fab_theme" class="st-chatu8-select">
+                    <!-- Các tùy chọn sẽ được điền động bằng JavaScript -->
+                </select>
+            </div>
+            <lớp div="st-chatu8-field">
+                <label for="chatu8_fab_bg_color">Màu nền</label>
+                <loại đầu vào="color" id="chatu8_fab_bg_color" class="st-chatu8-color-picker">
+            </div>
+            <div class="st-chatu8-field">
+                <label for="chatu8_fab_icon_color">Màu biểu tượng</label>
+                <loại đầu vào="color" id="chatu8_fab_icon_color" class="st-chatu8-color-picker">
+            </div>
+            <div class="st-chatu8-field">
+                <label for="chatu8_fab_opacity">Độ mờ</label>
+                <lớp div="st-chatu8-range-container">
+                    <input type="range" id="chatu8_fab_opacity" class="st-chatu8-range-slider" min="0" max="1" step="0.1">
+                    <input type="number" id="chatu8_fab_opacity_value" class="st-chatu8-range-input" min="0" max="1" step="0.1">
+                </div>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="chatu8_fab_size">Kích thước</nhãn>
+            <lớp div="st-chatu8-range-container">
+                <input type="range" id="chatu8_fab_size" class="st-chatu8-range-slider" min="30" max="1000" step="1">
+                <input type="number" id="chatu8_fab_size_value" class="st-chatu8-range-input" min="30" max="1000" step="1">
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label>Kiểm soát vị trí</label>
+            <id nút="chatu8_fab_reset_position" class="st-chatu8-btn">Đặt lại về giữa màn hình</button>
+        </div>
+    </div>
+</div>

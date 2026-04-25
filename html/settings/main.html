@@ -1,0 +1,176 @@
+<div id="ch-tab-main">
+    <div class="st-chatu8-settings-section">
+        <h3>Cài đặt chính</h3>
+        <lớp div="st-chatu8-field">
+            <label for="scriptEnabled">Bật plugin</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="scriptEnabled" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="helpTipsEnabled">Đặt mẹo hỏi đáp cho mục</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="helpTipsEnabled" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="mode">Chế độ</label>
+            <chọn id="mode" class="st-chatu8-select">
+                <option value="sd">SD</option>
+                <option value="novelai">NovelAI</option>
+                <option value="comfyui">ComfyUI</option>
+                <option value="banana">Banana/Grok</option>
+            </select>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="client">Khách hàng</label>
+            <chọn id="client" class="st-chatu8-select">
+                <option value="browser">Trình duyệt</option>
+                <giá trị tùy chọn="jiuguan">Quán rượu</option>
+            </select>
+        </div>
+        <lớp div="st-chatu8-field">
+            <label for="dbclike">Nút ẩn (được kích hoạt bằng cách nhấp đúp vào hình ảnh)</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="dbclike" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="collapseImage">Hình ảnh được thu gọn</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="collapseImage" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="zidongdianji">Tự động nhấp để tạo</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="zidongdianji" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="zidongdianji2">Tự động nhấp vào (không mở nó nếu không có gì xảy ra)</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="zidongdianji2" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="longPressToEdit">Nhấn và giữ hình ảnh để sửa đổi thẻ</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="longPressToEdit" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="clickToPreview">Nhấp vào xem trước hình ảnh</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="clickToPreview" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="newlineFixEnabled">Sửa chữa ngắt dòng</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="newlineFixEnabled" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="enablePregen">Bật tính năng phát trực tiếp</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="enablePregen" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="autoLLMImageGen">Yêu cầu LLM tự động để tạo biểu đồ (không nằm trong cùng một lớp)</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="autoLLMImageGen" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="imageGenInterval">Khoảng thời gian tạo hình ảnh (mili giây)</label>
+            <loại đầu vào="number" id="imageGenInterval" class="st-chatu8-text-input" min="0" step="100" placeholder="0">
+        </div>
+
+        <div class="st-chatu8-field">
+            <label for="imageAlignment">Căn chỉnh hình ảnh</label>
+            <chọn id="imageAlignment" class="st-chatu8-select">
+                <option value="left">Đi bên trái</option>
+                <giá trị tùy chọn="center">Trung tâm</option>
+                <giá trị tùy chọn="right">Đi bên phải</option>
+            </select>
+        </div>
+        <lớp div="st-chatu8-field">
+            <label for="imageSizeScale">Kích thước hiển thị hình ảnh</label>
+            <chọn id="imageSizeScale" class="st-chatu8-select">
+                <option value="100">Thích ứng (100%)</option>
+                <giá trị tùy chọn="75">kích thước 3/4 (75%)</option>
+                <giá trị tùy chọn="50">kích thước 1/2 (50%)</option>
+                <giá trị tùy chọn="25">kích thước 1/4 (25%)</option>
+            </select>
+        </div>
+    </div>
+    <lớp div="st-chatu8-settings-section">
+        <h3>thẻ</h3>
+        <lớp div="st-chatu8-field">
+            <label for="startTag">Thẻ bắt đầu</label>
+            <loại đầu vào="text" id="startTag" class="st-chatu8-text-input">
+        </div>
+        <div class="st-chatu8-field">
+            <label for="endTag">Thẻ kết thúc</label>
+            <loại đầu vào="text" id="endTag" class="st-chatu8-text-input">
+        </div>
+    </div>
+    <div class="st-chatu8-settings-section">
+        <h3>Chế độ lưu thẻ</h3>
+        <lớp div="st-chatu8-field">
+            <label for="insertOriginalText">Chèn văn bản gốc (không trên cùng một lớp)</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="insertOriginalText" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+    </div>
+    <div class="st-chatu8-settings-section">
+        <h3>Quản lý bộ đệm (nhấp vào nút bên dưới để xóa)</h3>
+        <lớp div="st-chatu8-field">
+            <label for="cache">Bộ nhớ đệm cần được xóa</label>
+            <chọn id="cache" class="st-chatu8-select">
+                <option value="0">Không còn bộ nhớ đệm</option>
+                <giá trị tùy chọn="1">Nhấp để xóa một ngày trước</option>
+                <giá trị tùy chọn="7">Nhấp để xóa một tuần trước</option>
+                <giá trị tùy chọn="30">Nhấp để xóa một tháng trước</option>
+                <giá trị tùy chọn="365">Nhấp để xóa một năm trước</option>
+            </select>
+        </div>
+        <lớp div="st-chatu8-field">
+            <label for="jiuguanchucun">Lưu hình ảnh vào bộ nhớ đệm vào quán rượu</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="jiuguanchucun" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="convertToJpegStorage">Chuyển đổi sang JPEG tiết kiệm 70% dung lượng (độ nhiễu tăng đáng kể)</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="convertToJpegStorage" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <nhãn>Hoạt động</label>
+            <div>
+                <id nút="sync-server-images-btn" class="st-chatu8-btn">Đồng bộ hóa hình ảnh máy chủ</button>
+                <id nút="Clear-Cache" class="st-chatu8-btn danger">Xóa bộ nhớ đệm hình ảnh</button>
+                <id nút="migrate-database-btn" class="st-chatu8-btn">Di chuyển dữ liệu</button>
+            </div>
+        </div>
+    </div>
+</div>

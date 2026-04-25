@@ -1,0 +1,127 @@
+<div id="ch-tab-log">
+    <!-- Sự nghiệp nhiếp ảnh -->
+    <lớp div="st-chatu8-settings-section">
+        <h3>🎨Sự nghiệp nhiếp ảnh</h3>
+
+        <!-- Thẻ tóm tắt -->
+        <div id="ch-gen-summary" style="margin-bottom: 10px;">
+            <span style="color: #888;">Đang tải...</span>
+        </div>
+
+        <!-- Truyền thuyết -->
+        <div id="ch-gen-legend" style="margin-bottom: 6px;"></div>
+
+        <!-- Chuyển đổi chiều thời gian -->
+        <kiểu div="display: flex; gap: 4px; margin-bottom: 6px;">
+            <button class="ch-period-btn" data-period="day"
+                style="padding: 3px 10px; font-size: 12px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; background: rgba(255,255,255,0.06); color: #aaa;">Ngày</button>
+            <lớp nút="ch-period-btn" data-period="week"
+                style="padding: 3px 10px; font-size: 12px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; background: rgba(255,255,255,0.06); color: #aaa;">Tuần</button>
+            <lớp nút="ch-period-btn" data-period="month"
+                style="padding: 3px 10px; font-size: 12px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; background: rgba(255,255,255,0.06); color: #aaa;">Tháng</button>
+            <lớp nút="ch-period-btn" data-period="year"
+                style="padding: 3px 10px; font-size: 12px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; background: rgba(255,255,255,0.06); color: #aaa;">Năm</button>
+        </div>
+
+        <!-- Vùng biểu đồ -->
+        <div id="ch-gen-chart" style="min-height: 110px; margin-bottom: 10px;">
+            <div style="text-align:center; color:#888; padding:20px 0;">Đang tải...</div>
+        </div>
+
+        <!-- Nhấn vào thanh tiến trình phụ trợ -->
+        <div id="ch-gen-backends" style="margin-bottom: 8px;"></div>
+
+        <!-- Nút thao tác -->
+        <lớp div="st-chatu8-field" style="margin-top: 4px;">
+            <nhãn>Hoạt động</label>
+            <div>
+                <id nút="ch-refresh-gen-stats" class="st-chatu8-btn">Làm mới số liệu thống kê</button>
+                <id nút="ch-reset-gen-stats" class="st-chatu8-btn danger">Đặt lại số liệu thống kê</button>
+            </div>
+        </div>
+        <lớp div="st-chatu8-field-col" style="font-size: 12px; color: #888;">
+            <span>💡 Mỗi lần tạo ảnh thành công đều được tự động ghi lại và lưu vĩnh viễn. Xu hướng có thể được xem theo ngày/tuần/tháng/năm. </span>
+        </div>
+    </div>
+
+    <!-- Chế độ gỡ lỗi -->
+    <lớp div="st-chatu8-settings-section">
+        <h3>🔧Chế độ gỡ lỗi</h3>
+        <lớp div="st-chatu8-field">
+            <label>Công tắc gỡ lỗi</label>
+            <kiểu div="display: flex; align-items: center; gap: 10px;">
+                <label class="checkbox_label">
+                    <input id="ch-debug-mode-toggle" type="checkbox"/>
+                    <span>Bật ghi nhật ký gỡ lỗi chi tiết</span>
+                </nhãn>
+                <span id="ch-debug-status" style="color: #999; font-size: 12px;"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label>Công cụ gỡ lỗi</label>
+            <div>
+                <id nút="ch-download-debug-log" class="st-chatu8-btn"bị vô hiệu hóa>Tải xuống nhật ký gỡ lỗi</button>
+                <id nút="ch-clear-debug-log" class="st-chatu8-btn danger"bị vô hiệu hóa>Xóa nhật ký gỡ lỗi</button>
+            </div>
+        </div>
+        <lớp div="st-chatu8-field-col" style="font-size: 12px; color: #888;">
+            <span>💡 Chế độ gỡ lỗi ghi lại thời gian thực hiện chức năng chi tiết và logic nhánh. Công tắc không hoạt động liên tục và cần được bật lại sau khi đóng trang cài đặt. </span>
+        </div>
+    </div>
+
+    <!-- Trình thu thập lỗi -->
+    <lớp div="st-chatu8-settings-section">
+        <h3>🚨Bản ghi lỗi</h3>
+        <lớp div="st-chatu8-field">
+            <label>Thống kê lỗi</label>
+            <div id="ch-error-stats" style="font-size: 12px; color: #666; line-height: 1.6;">
+                <span>Đang tải...</span>
+            </div>
+        </div>
+        <lớp div="st-chatu8-field">
+            <label>Công cụ lỗi</label>
+            <div>
+                <id nút="ch-view-errors" class="st-chatu8-btn">Xem chi tiết lỗi</button>
+                <id nút="ch-download-errors" class="st-chatu8-btn"bị vô hiệu hóa>Tải xuống nhật ký lỗi</button>
+                <id nút="ch-clear-errors" class="st-chatu8-btn danger"bị vô hiệu hóa>Xóa bản ghi lỗi</button>
+            </div>
+        </div>
+        <lớp div="st-chatu8-field-col" style="font-size: 12px; color: #888;">
+            <span>💡 Trình thu thập lỗi tự động ghi lại các lỗi thời gian chạy của trình cắm, không bị ảnh hưởng bởi việc xóa nhật ký thông thường và có thể lưu tới 500 bản ghi. </span>
+        </div>
+    </div>
+
+    <!-- Nhật ký chung -->
+    <lớp div="st-chatu8-settings-section">
+        <h3>Nhật ký</h3>
+        <lớp div="st-chatu8-field">
+            <nhãn>Hoạt động</label>
+            <div>
+                <id nút="ch-export-log" class="st-chatu8-btn">Xuất nhật ký</button>
+                <id nút="ch-clear-log" class="st-chatu8-btn danger">Xóa nhật ký</button>
+            </div>
+        </div>
+        <lớp div="st-chatu8-field-col">
+            <label for="ch-log-textarea">Nhật ký đầu ra</label>
+            <id vùng văn bản="ch-log-textarea" class="st-chatu8-textarea" rows="15" readonly style="font-family: monospace; font-size: 12px;"></textarea>
+        </div>
+    </div>
+
+    <!-- Trình quản lý tác vụ -->
+    <lớp div="st-chatu8-settings-section">
+        <h3>📊 Quản lý tác vụ <span id="ch-task-stats" class="st-chatu8-task-stats" style="display: none;"></span></h3>
+        <div class="st-chatu8-field">
+            <nhãn>Hoạt động</label>
+            <div>
+                <id nút="ch-cancel-all-tasks" class="st-chatu8-btn danger">Hủy tất cả</button>
+                <id nút="ch-clear-completed" class="st-chatu8-btn">Xóa hoàn thành</button>
+            </div>
+        </div>
+        <lớp div="st-chatu8-field-col">
+            <label>Danh sách nhiệm vụ</label>
+            <div id="ch-task-list" class="st-chatu8-task-list">
+                <div class="st-chatu8-task-empty">Chưa có nhiệm vụ nào</div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,475 @@
+<div id="ch-tab-knowledgeBase">
+    <!-- Điều hướng phụ -->
+    <lớp div="st-chatu8-sub-nav">
+        <a href="#" class="st-chatu8-sub-nav-link active" data-sub-tab="ch-sub-tab-kb-entries">Quản lý cơ sở dữ liệu</a>
+        <a href="#" class="st-chatu8-sub-nav-link" data-sub-tab="ch-sub-tab-kb-persona">Quản lý nhân sự</a>
+        <a href="#" class="st-chatu8-sub-nav-link" data-sub-tab="ch-sub-tab-kb-user">quản lý người dùng</a>
+    </div>
+
+    <!-- ===== Tab phụ quản lý cơ sở dữ liệu (phiên bản mới: Giao diện người dùng chọn Sách Thế giới) ===== -->
+    <div id="ch-sub-tab-kb-entries" class="st-chatu8-sub-tab-content" style="display: block;">
+
+        <!-- Chuyển đổi toàn cầu -->
+        <lớp div="st-chatu8-settings-section">
+            <h4>Cơ sở dữ liệu</h4>
+            <lớp div="st-chatu8-field">
+                <label for="ch-kb2-enabled">Kích hoạt chức năng cơ sở dữ liệu</label>
+                <lớp div="st-chatu8-toggle">
+                    <input id="ch-kb2-enabled" type="checkbox" />
+                    <span class="st-chatu8-slider"></span>
+                </div>
+            </div>
+            <div class="st-chatu8-field">
+                <label for="ch-kb2-trigger-depth">Độ sâu kích hoạt</label>
+                <loại đầu vào="number" id="ch-kb2-trigger-depth" class="st-chatu8-text-input"
+                    min="0" max="20" step="1" style="width:80px;" value="1" />
+            </div>
+            <div class="st-chatu8-field">
+                <label for="ch-kb2-skip-constant">Bỏ qua Thường mở</label>
+                <lớp div="st-chatu8-toggle">
+                    <input id="ch-kb2-skip-constant" type="checkbox" checked />
+                    <span class="st-chatu8-slider"></span>
+                </div>
+            </div>
+            <p class="st-chatu8-hint">
+                Độ sâu kích hoạt 0: Chỉ tin nhắn cuối cùng của người dùng mới được sử dụng làm trình kích hoạt từ khóa. <br>
+                Độ sâu 1: Sử dụng tin nhắn cuối cùng của người dùng + câu trả lời AI trước đó (tổng cộng 2) làm trình kích hoạt, v.v. <br>
+                Độ sâu càng cao thì càng kích hoạt nhiều mục sách thế giới nhưng thời gian xử lý cũng tăng nhẹ. <br>
+                Khi được bật: Các từ nhắc nhở của AI sẽ tự động được đưa vào nội dung mục nhập sách thế giới phù hợp. <br>
+                Nó hoàn toàn độc lập với trạng thái kiểm tra “Gửi dữ liệu” và không ảnh hưởng lẫn nhau. <br>
+                <b>Bỏ qua thông thường mở</b>: Khi được bật, cơ sở dữ liệu chỉ thu được các mục nhập có "bật bắt buộc" và "kích hoạt từ khóa" và bỏ qua các mục nhập thông thường mở thuần túy (trừ khi các mục nhập không mở cũng nhấn vào từ khóa kích hoạt).
+            </p>
+        </div>
+
+
+        <!-- Sách thế giới + lựa chọn cột đôi mục nhập (kiểu giả send_data, tiền tố ID độc lập ch-kb2-) -->
+        <lớp div="st-chatu8-settings-section" id="ch-kb2-selector-section">
+
+            <div class="st-chatu8-send-data-layout">
+                <!-- Cột bên trái: Danh sách sách thế giới -->
+                <lớp div="st-chatu8-send-data-left">
+                    <div class="st-chatu8-list-header">
+                        <h3>📚 Sách thế giới</h3>
+                        <lớp div="st-chatu8-field">
+                            <input type="text" id="ch-kb2-world-search" class="st-chatu8-text-input"
+                                placeholder="Tìm kiếm Sách Thế giới..." />
+                        </div>
+                        <div class="st-chatu8-batch-buttons">
+                            <button id="ch-kb2-refresh-worlds" class="st-chatu8-batch-button">
+                                <i class="fa fa-refresh"></i> Làm mới sách thế giới
+                            </button>
+                            <id nút="ch-kb2-test-trigger" class="st-chatu8-batch-button">
+                                <i class="fa fa-flask"></i>Trình kích hoạt thử nghiệm
+                            </button>
+                        </div>
+                    </div>
+                    <div id="ch-kb2-world-list" class="st-chatu8-send-data-list">
+                        <div style="padding:10px; color:#888;">Nhấp vào nút làm mới để tải danh sách sách thế giới. </div>
+                    </div>
+                </div>
+
+                <!-- Cột bên phải: danh sách các mục -->
+                <lớp div="st-chatu8-send-data-right">
+                    <div class="st-chatu8-list-header">
+                        <h3>📝 Công tắc đầu vào</h3>
+                        <lớp div="st-chatu8-field">
+                            <input type="text" id="ch-kb2-entry-search" class="st-chatu8-text-input"
+                                placeholder="Thuật ngữ tìm kiếm..." />
+                        </div>
+                        <!-- Nút thao tác hàng loạt -->
+                        <div class="st-chatu8-batch-buttons">
+                            <button id="ch-kb2-select-all" class="st-chatu8-batch-button">Chọn tất cả</button>
+                            <id nút="ch-kb2-deselect-all" class="st-chatu8-batch-button">Hủy chọn tất cả</button>
+                        </div>
+                    </div>
+                    <div id="ch-kb2-entry-list" class="st-chatu8-send-data-list">
+                        <div style="padding:10px; color:#888;">Xin vui lòng chọn một cuốn sách thế giới ở bên trái trước. </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Trang phụ quản lý người dùng ===== -->
+    <div id="ch-sub-tab-kb-user" class="st-chatu8-sub-tab-content" style="display: none;">
+
+        <!-- Cột quản lý mặc định -->
+        <lớp div="st-chatu8-settings-section">
+            <h4>Mặc định của người dùng</h4>
+            <lớp div="st-chatu8-field">
+                <label for="ch-user-preset-id">Mặc định hiện tại</label>
+                <lớp div="st-chatu8-profile-controls">
+                    <select id="ch-user-preset-id" class="st-chatu8-select"></select>
+                    <button class="st-chatu8-icon-btn" id="ch-user-new" title="Mới"><i class="fa-solid fa-plus"></i></button>
+                    <button class="st-chatu8-icon-btn" id="ch-user-save" title="lưu lại"><i class="fa-solid fa-save"></i></button>
+                    <button class="st-chatu8-icon-btn" id="ch-user-save-as" title="lưu dưới dạng"><i class="fa-solid fa-file-export"></i></button>
+                    <button class="st-chatu8-icon-btn" id="ch-user-export" title="Xuất khẩu"><i class="fa-solid fa-upload"></i></button>
+                    <button class="st-chatu8-icon-btn" id="ch-user-export-all" title="Xuất tất cả"><i class="fa-solid fa-cloud-upload-alt"></i></button>
+                    <button class="st-chatu8-icon-btn" id="ch-user-import" title="nhập khẩu"><i class="fa-solid fa-download"></i></button>
+                    <button class="st-chatu8-icon-btn danger" id="ch-user-delete" title="Xóa"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            </div>
+            <input type="file" id="ch-user-import-file" accept=".json" style="display: none;"/>
+        </div>
+
+        <!-- Khu vực kiểm soát toàn cầu -->
+        <lớp div="st-chatu8-settings-section">
+            <h4>Kiểm soát ký tự người dùng</h4>
+            <lớp div="st-chatu8-field">
+                <label for="ch-user-enabled">Cho phép chèn Persona của người dùng</label>
+                <lớp div="st-chatu8-toggle">
+                    <input id="ch-user-enabled" type="checkbox" />
+                    <span class="st-chatu8-slider"></span>
+                </div>
+            </div>
+            <p class="st-chatu8-hint">
+                Nội dung ký tự của người dùng sẽ được đưa trực tiếp vào các từ nhắc nhở của hệ thống và AI sẽ luôn hiển thị. <br>
+                Mẹo: Tính cách người dùng và tính cách nhân vật chia sẻ nhóm mặc định và có thể được đưa vào bằng cách sử dụng biến mẫu <code>{{userpersona}</code>.
+            </p>
+        </div>
+
+        <!-- Khu vực tải lên hình đại diện -->
+        <lớp div="st-chatu8-settings-section">
+            <h4>Cài đặt hình đại diện</h4>
+            <lớp div="st-chatu8-avatar-upload-area">
+                <div class="st-chatu8-avatar-preview" id="ch-user-avatar-preview">
+                    <img id="ch-user-avatar-img" src="" alt="Xem trước hình đại diện" />
+                    <div class="st-chatu8-avatar-placeholder">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Nhấp để tải hình đại diện lên</span>
+                    </div>
+                </div>
+                <lớp div="st-chatu8-avatar-controls">
+                    <button class="st-chatu8-btn st-chatu8-btn-small" id="ch-user-avatar-upload-btn">
+                        <i class="fa-solid fa-upload"></i>Tải hình đại diện lên
+                    </button>
+                    <lớp nút="st-chatu8-btn st-chatu8-btn-small danger" id="ch-user-avatar-remove-btn" style="display: none;">
+                        <i class="fa-solid fa-trash"></i>Xóa hình đại diện
+                    </button>
+                    <loại đầu vào="file" id="ch-user-avatar-input" accept="image/*" style="display: none;" />
+                </div>
+                <p class="st-chatu8-hint">
+                    Kích thước được đề xuất: hình ảnh vuông 256x256 hoặc lớn hơn, hỗ trợ các định dạng JPG, PNG, WebP
+                </p>
+            </div>
+        </div>
+
+        <!-- Vùng thông tin cơ bản -->
+        <lớp div="st-chatu8-settings-section">
+            <h4>Thông tin cơ bản</h4>
+            <lớp div="st-chatu8-persona-row">
+                <div class="st-chatu8-field-col st-chatu8-persona-half">
+                    <label for="ch-user-name">Tên nhân vật</label>
+                    <loại đầu vào="text" id="ch-user-name" class="st-chatu8-text-input" placeholder="Tên người dùng" />
+                </div>
+                <div class="st-chatu8-field-col st-chatu8-persona-half">
+                    <label for="ch-user-age">Tuổi</label>
+                    <loại đầu vào="text" id="ch-user-age" class="st-chatu8-text-input" placeholder="Chẳng hạn như: 18 tuổi, không rõ" />
+                </div>
+            </div>
+            <div class="st-chatu8-persona-row">
+                <div class="st-chatu8-field-col st-chatu8-persona-half">
+                    <label for="ch-user-gender">Giới tính</label>
+                    <loại đầu vào="text" id="ch-user-gender" class="st-chatu8-text-input" placeholder="Chẳng hạn như: nữ, nam, khác" />
+                </div>
+                <div class="st-chatu8-field-col st-chatu8-persona-half">
+                    <label for="ch-user-race">Chủng tộc/loài</label>
+                    <loại đầu vào="text" id="ch-user-race" class="st-chatu8-text-input" placeholder="Chẳng hạn như: con người, yêu tinh, catgirl" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Vùng nhân vật và nền -->
+        <div class="st-chatu8-settings-section">
+            <h4>Nhân vật và bối cảnh</h4>
+            <lớp div="st-chatu8-field-col">
+                <label for="ch-user-personality">Nhân vật</label>
+                <id vùng văn bản="ch-user-personality" class="st-chatu8-textarea" rows="3" placeholder="Miêu tả đặc điểm tính cách của nhân vật..."></textarea>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="ch-user-background">Nền</label>
+                <id vùng văn bản="ch-user-background" class="st-chatu8-textarea" rows="3" placeholder="Bối cảnh câu chuyện và trải nghiệm cuộc sống của nhân vật..."></textarea>
+            </div>
+        </div>
+
+        <!-- Khu vực mô tả ngoại hình -->
+        <div class="st-chatu8-settings-section">
+            <h4>Mô tả ngoại hình</h4>
+            <lớp div="st-chatu8-field-col">
+                <label for="ch-user-bodyType">Bóng tối</label>
+                <id vùng văn bản="ch-user-bodyType" class="st-chatu8-textarea" rows="2" placeholder="Mô tả về chiều cao, hình dáng cơ thể, v.v..."></textarea>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="ch-user-appearance">Đặc điểm ngoại hình</label>
+                <id vùng văn bản="ch-user-appearance" class="st-chatu8-textarea" rows="2" placeholder="Các chi tiết ngoại hình như màu tóc, màu mắt, màu da..."></textarea>
+            </div>
+        </div>
+
+        <!-- Các lĩnh vực thông tin khác -->
+        <div class="st-chatu8-settings-section">
+            <h4>Thông tin khác</h4>
+            <lớp div="st-chatu8-field-col">
+                <label for="ch-user-hobbies">Sở thích</label>
+                <id vùng văn bản="ch-user-hobbies" class="st-chatu8-textarea" rows="2" placeholder="Sở thích, sở thích của nhân vật..."></textarea>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="ch-user-abilities">Khả năng đặc biệt</label>
+                <id vùng văn bản="ch-user-abilities" class="st-chatu8-textarea" rows="2" placeholder="Những khả năng/kỹ năng đặc biệt mà nhân vật sở hữu..."></textarea>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="ch-user-speechStyle">Thói quen/cách nói chuyện</label>
+                <id vùng văn bản="ch-user-speechStyle" class="st-chatu8-textarea" rows="2" placeholder="Thói quen ngôn ngữ của nhân vật và những câu thần chú thông thường..."></textarea>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="ch-user-relationships">Mối quan hệ giữa các cá nhân</label>
+                <id vùng văn bản="ch-user-relationships" class="st-chatu8-textarea" rows="2" placeholder="Mô tả mối quan hệ với các nhân vật khác..."></textarea>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="ch-user-notes">Nhận xét khác</label>
+                <id vùng văn bản="ch-user-notes" class="st-chatu8-textarea" rows="2" placeholder="Thông tin bổ sung tùy chỉnh khác..."></textarea>
+            </div>
+        </div>
+
+        <!-- Du hành qua vùng nhận thức (liên quan đến du hành chiều) -->
+        <div class="st-chatu8-settings-section">
+            <h4>🌀 Nhận thức du hành thời gian <span class="st-chatu8-hint" style="font-weight:normal;font-size:12px;">(Cài đặt di chuyển kích thước, tùy chọn)</span></h4>
+            <p lớp="st-chatu8-hint">
+                Cài đặt nhận thức du hành thời gian của người dùng. Nếu không cần cài đặt truyền tải, chỉ cần để trống.
+            </p>
+            <lớp div="st-chatu8-field-col">
+                <label for="ch-user-isekai_origin">Nguồn du lịch</label>
+                <id vùng văn bản="ch-user-isekai_origin" class="st-chatu8-textarea" rows="2" placeholder="Người dùng đến từ thế giới/câu chuyện/thời đại nào..."></textarea>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="ch-user-isekai_method">Phương pháp di chuyển ngang</label>
+                <id vùng văn bản="ch-user-isekai_method" class="st-chatu8-textarea" rows="2" placeholder="Bạn đã du hành xuyên thời gian như thế nào? Triệu hồi, rạn nứt không gian, dịch chuyển ma thuật..."></textarea>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="ch-user-isekai_reaction">Phản ứng sau khi đi du lịch</label>
+                <id vùng văn bản="ch-user-isekai_reaction" class="st-chatu8-textarea" rows="3" placeholder="Khám phá cảm xúc và phản ứng của bạn trong thế giới máy tính/quán rượu..."></textarea>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="ch-user-isekai_goal">Bàn thắng khi tạt bóng</label>
+                <id vùng văn bản="ch-user-isekai_goal" class="st-chatu8-textarea" rows="2" placeholder="Trong chuyến du hành xuyên thời gian, ngoài việc tương tác với các nhân vật, tôi còn muốn làm gì nữa…"></textarea>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== Trang phụ quản lý cá nhân (m��i) ===== -->
+    <div id="ch-sub-tab-kb-persona" class="st-chatu8-sub-tab-content" style="display: none;">
+
+        <!-- Cột quản lý mặc định -->
+        <lớp div="st-chatu8-settings-section">
+            <h4>Mặc định cá nhân</h4>
+            <lớp div="st-chatu8-field">
+                <label for="ch-persona-preset-id">Mặc định hiện tại</label>
+                <lớp div="st-chatu8-profile-controls">
+                    <select id="ch-persona-preset-id" class="st-chatu8-select"></select>
+                    <button class="st-chatu8-icon-btn" id="ch-persona-new" title="Mới"><i class="fa-solid fa-plus"></i></button>
+                    <button class="st-chatu8-icon-btn" id="ch-persona-save" title="lưu lại"><i class="fa-solid fa-save"></i></button>
+                    <button class="st-chatu8-icon-btn" id="ch-persona-save-as" title="lưu dưới dạng"><i class="fa-solid fa-file-export"></i></button>
+                    <button class="st-chatu8-icon-btn" id="ch-persona-export" title="Xuất khẩu"><i class="fa-solid fa-upload"></i></button>
+                    <button class="st-chatu8-icon-btn" id="ch-persona-export-all" title="Xuất tất cả"><i class="fa-solid fa-cloud-upload-alt"></i></button>
+                    <button class="st-chatu8-icon-btn" id="ch-persona-import" title="nhập khẩu"><i class="fa-solid fa-download"></i></button>
+                    <button class="st-chatu8-icon-btn danger" id="ch-persona-delete" title="Xóa"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            </div>
+            <input type="file" id="ch-persona-import-file" accept=".json" style="display: none;"/>
+        </div>
+
+        <!-- Khu vực tạo nhân vật -->
+        <lớp div="ch-persona-gen-section">
+            <div class="ch-persona-gen-header">
+                <span class="ch-section-title">✨Tạo nhân vật AI</span>
+            </div>
+            <lớp div="ch-persona-gen-controls">
+                <!-- Tạo bộ chọn loại -->
+                <lớp div="ch-persona-gen-type-selector">
+                    <label>Loại thế hệ:</label>
+                    <chọn id="ch-persona-gen-type" class="st-chatu8-select">
+                        <option value="character">Thiết kế nhân vật (bao gồm cài đặt du hành thời gian)</option>
+                        <giá trị tùy chọn="user">Hồ sơ người dùng (không có cài đặt du hành thời gian)</option>
+                    </select>
+                </div>
+                <!-- Yêu cầu nhập -->
+                <lớp div="ch-persona-gen-demand">
+                    <label>Tạo yêu cầu (tùy chọn)</label>
+                    <id vùng văn bản="ch-persona-gen-demand" 
+                              class="ch-textarea" 
+                              placeholder="Mô tả đặc điểm của nhân vật bạn muốn, để trống và nó sẽ được tạo tự động dựa trên thẻ nhân vật hiện tại..."
+                              rows="3"></textarea>
+                </div>
+                <!-- Tải ảnh tham khảo -->
+                <lớp div="ch-persona-gen-upload">
+                    <div class="ch-persona-gen-upload-header">
+                        <nhãn>📎 Hình ảnh tham khảo (tùy chọn)</label>
+                        <loại nút="button" id="ch-persona-gen-upload-btn" class="ch-btn-small">
+                            <i class="fa-solid fa-plus"></i>Thêm hình ảnh
+                        </button>
+                        <loại đầu vào="file" id="ch-persona-gen-upload-input" accept="image/*" multiple style="display: none;" />
+                    </div>
+                    <div id="ch-persona-gen-preview" class="ch-persona-gen-preview-container">
+                        <div class="ch-persona-gen-empty-hint">Nhấp vào nút bên trên để thêm ảnh tham chiếu và AI sẽ giúp tạo ký tự dựa trên nội dung ảnh</div>
+                    </div>
+                </div>
+                <!-- Nút tạo -->
+                <lớp div="ch-persona-gen-actions">
+                    <button id="ch-persona-gen-btn" class="ch-btn ch-btn-primary">
+                        <span class="ch-btn-icon">🎭</span>
+                        <span class="ch-btn-text">Tạo ký tự</span>
+                    </button>
+                    <span id="ch-persona-gen-status" class="ch-status-text"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Khu vực kiểm soát toàn cầu -->
+        <lớp div="st-chatu8-settings-section">
+            <h4>Kiểm soát nhân cách</h4>
+            <lớp div="st-chatu8-field">
+                <label for="ch-persona-enabled">Bật tính năng chèn ký tự</label>
+                <lớp div="st-chatu8-toggle">
+                    <input id="ch-persona-enabled" type="checkbox" />
+                    <span class="st-chatu8-slider"></span>
+                </div>
+            </div>
+            <p class="st-chatu8-hint">
+                Nội dung ký tự sẽ được đưa trực tiếp vào các từ nhắc nhở của hệ thống và AI sẽ luôn hiển thị.
+            </p>
+        </div>
+
+        <!-- Khu vực tải lên hình đại diện -->
+        <lớp div="st-chatu8-settings-section">
+            <h4>Cài đặt hình đại diện</h4>
+            <lớp div="st-chatu8-avatar-upload-area">
+                <div class="st-chatu8-avatar-preview" id="ch-persona-avatar-preview">
+                    <img id="ch-persona-avatar-img" src="" alt="Xem trước hình đại diện" />
+                    <div class="st-chatu8-avatar-placeholder">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Nhấp để tải hình đại diện lên</span>
+                    </div>
+                </div>
+                <lớp div="st-chatu8-avatar-controls">
+                    <button class="st-chatu8-btn st-chatu8-btn-small" id="ch-persona-avatar-upload-btn">
+                        <i class="fa-solid fa-upload"></i>Tải hình đại diện lên
+                    </button>
+                    <lớp nút="st-chatu8-btn st-chatu8-btn-small danger" id="ch-persona-avatar-remove-btn" style="display: none;">
+                        <i class="fa-solid fa-trash"></i>Xóa hình đại diện
+                    </button>
+                    <loại đầu vào="file" id="ch-persona-avatar-input" accept="image/*" style="display: none;" />
+                </div>
+                <p class="st-chatu8-hint">
+                    Kích thước được đề xuất: hình ảnh vuông 256x256 hoặc lớn hơn, hỗ trợ các định dạng JPG, PNG, WebP
+                </p>
+            </div>
+        </div>
+
+        <!-- Vùng thông tin cơ bản -->
+        <lớp div="st-chatu8-settings-section">
+            <h4>Thông tin cơ bản</h4>
+            <lớp div="st-chatu8-persona-row">
+                <div class="st-chatu8-field-col st-chatu8-persona-half">
+                    <label for="ch-persona-name">Tên nhân vật</label>
+                    <loại đầu vào="text" id="ch-persona-name" class="st-chatu8-text-input" placeholder="tên nhân vật" />
+                </div>
+                <div class="st-chatu8-field-col st-chatu8-persona-half">
+                    <label for="ch-persona-age">Tuổi</label>
+                    <loại đầu vào="text" id="ch-persona-age" class="st-chatu8-text-input" placeholder="Chẳng hạn như: 18 tuổi, không rõ" />
+                </div>
+            </div>
+            <div class="st-chatu8-persona-row">
+                <div class="st-chatu8-field-col st-chatu8-persona-half">
+                    <label for="ch-persona-gender">Giới tính</label>
+                    <loại đầu vào="text" id="ch-persona-gender" class="st-chatu8-text-input" placeholder="Chẳng hạn như: nữ, nam, khác" />
+                </div>
+                <div class="st-chatu8-field-col st-chatu8-persona-half">
+                    <label for="ch-persona-race">Chủng tộc/loài</label>
+                    <loại đầu vào="text" id="ch-persona-race" class="st-chatu8-text-input" placeholder="Chẳng hạn như: con người, yêu tinh, catgirl" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Vùng nhân vật và nền -->
+        <div class="st-chatu8-settings-section">
+            <h4>Nhân vật và bối cảnh</h4>
+            <lớp div="st-chatu8-field-col">
+                <label for="ch-persona-personality">Nhân vật</label>
+                <id vùng văn bản="ch-persona-personality" class="st-chatu8-textarea" rows="3" placeholder="Miêu tả đặc điểm tính cách của nhân vật..."></textarea>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="ch-persona-background">Nền</label>
+                <id vùng văn bản="ch-persona-background" class="st-chatu8-textarea" rows="3" placeholder="Bối cảnh câu chuyện và trải nghiệm cuộc sống của nhân vật..."></textarea>
+            </div>
+        </div>
+
+        <!-- Khu vực mô tả ngoại hình -->
+        <div class="st-chatu8-settings-section">
+            <h4>Mô tả ngoại hình</h4>
+            <lớp div="st-chatu8-field-col">
+                <label for="ch-persona-bodyType">Bóng tối</label>
+                <id vùng văn bản="ch-persona-bodyType" class="st-chatu8-textarea" rows="2" placeholder="Mô tả về chiều cao, hình dáng cơ thể, v.v..."></textarea>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="ch-persona-appearance">Đặc điểm ngoại hình</label>
+                <id vùng văn bản="ch-persona-appearance" class="st-chatu8-textarea" rows="2" placeholder="Các chi tiết ngoại hình như màu tóc, màu mắt, màu da..."></textarea>
+            </div>
+        </div>
+
+        <!-- Các lĩnh vực thông tin khác -->
+        <div class="st-chatu8-settings-section">
+            <h4>Thông tin khác</h4>
+            <lớp div="st-chatu8-field-col">
+                <label for="ch-persona-hobbies">Sở thích</label>
+                <id vùng văn bản="ch-persona-hobbies" class="st-chatu8-textarea" rows="2" placeholder="Sở thích, sở thích của nhân vật..."></textarea>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="ch-persona-abilities">Khả năng đặc biệt</label>
+                <id vùng văn bản="ch-persona-abilities" class="st-chatu8-textarea" rows="2" placeholder="Những khả năng/kỹ năng đặc biệt mà nhân vật sở hữu..."></textarea>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="ch-persona-speechStyle">Thói quen/cách nói chuyện</label>
+                <id vùng văn bản="ch-persona-speechStyle" class="st-chatu8-textarea" rows="2" placeholder="Thói quen ngôn ngữ của nhân vật và những câu thần chú thông thường..."></textarea>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="ch-persona-relationships">Mối quan hệ giữa các cá nhân</label>
+                <id vùng văn bản="ch-persona-relationships" class="st-chatu8-textarea" rows="2" placeholder="Mô tả mối quan hệ với các nhân vật khác..."></textarea>
+            </div>
+        </div>
+
+        <!-- Du hành qua vùng nhận thức (liên quan đến du hành chiều) -->
+        <div class="st-chatu8-settings-section">
+            <h4>🌀 Nhận thức du hành thời gian <span class="st-chatu8-hint" style="font-weight:normal;font-size:12px;">(Cài đặt di chuyển kích thước, tùy chọn)</span></h4>
+            <p lớp="st-chatu8-hint">
+                Nhân vật sẽ đến quán rượu trong máy tính của người dùng thông qua "du hành không gian" và đồng hành cùng người dùng trong 100 ngày. <br>
+                Các trường sau xác định kiến thức của nhân vật về du hành thời gian. Để trống để không sử dụng cài đặt truyền tải.
+            </p>
+            <lớp div="st-chatu8-field-col">
+                <label for="ch-persona-isekai_origin">Nguồn du lịch</label>
+                <id vùng văn bản="ch-persona-isekai_origin" class="st-chatu8-textarea" rows="2" placeholder="Nhân vật này đến từ thế giới/câu chuyện/thời đại nào..."></textarea>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="ch-persona-isekai_method">Phương pháp di chuyển ngang</label>
+                <id vùng văn bản="ch-persona-isekai_method" class="st-chatu8-textarea" rows="2" placeholder="Bạn đã du hành xuyên thời gian như thế nào? Triệu hồi, rạn nứt không gian, dịch chuyển ma thuật..."></textarea>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="ch-persona-isekai_reaction">Phản ứng sau khi đi du lịch</label>
+                <id vùng văn bản="ch-persona-isekai_reaction" class="st-chatu8-textarea" rows="3" placeholder="Khám phá cảm xúc và phản ứng của bạn trong thế giới máy tính/quán rượu..."></textarea>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="ch-persona-isekai_goal">Bàn thắng khi tạt bóng</label>
+                <id vùng văn bản="ch-persona-isekai_goal" class="st-chatu8-textarea" rows="2" placeholder="Trong thời gian 100 ngày đồng hành, ngoài việc đồng hành cùng người dùng, tôi còn muốn làm gì nữa..."></textarea>
+            </div>
+        </div>
+
+        <!-- Khu vực thông tin bổ sung -->
+        <div class="st-chatu8-settings-section">
+            <h4>Thông tin bổ sung</h4>
+            <lớp div="st-chatu8-field-col">
+                <label for="ch-persona-notes">Nhận xét khác</label>
+                <id vùng văn bản="ch-persona-notes" class="st-chatu8-textarea" rows="2" placeholder="Thông tin bổ sung tùy chỉnh khác..."></textarea>
+            </div>
+        </div>
+
+    </div>
+</div>

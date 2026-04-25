@@ -1,0 +1,576 @@
+<div id="ch-tab-character">
+    <!-- Điều hướng phụ -->
+    <lớp div="st-chatu8-sub-nav">
+        <a href="#" class="st-chatu8-sub-nav-link active" data-sub-tab="ch-sub-tab-character-settings">Cài đặt ký tự</a>
+        <a href="#" class="st-chatu8-sub-nav-link" data-sub-tab="ch-sub-tab-outfit-settings">Quản lý quần áo</a>
+        <a href="#" class="st-chatu8-sub-nav-link" data-sub-tab="ch-sub-tab-character-enable">Quản lý hỗ trợ vai trò</a>
+        <a href="#" class="st-chatu8-sub-nav-link" data-sub-tab="ch-sub-tab-outfit-enable">Bật danh sách quần áo phổ thông</a>
+        <a href="#" class="st-chatu8-sub-nav-link" data-sub-tab="ch-sub-tab-character-common">Bật danh sách vai trò chung</a>
+        <a href="#" class="st-chatu8-sub-nav-link" data-sub-tab="ch-sub-tab-banana-character">Quản lý vai trò chuối</a>
+    </div>
+
+    <!-- Trang phụ cài đặt ký tự -->
+    <div id="ch-sub-tab-character-settings" class="st-chatu8-sub-tab-content" style="display: block;">
+        <!-- Quản lý mặc định -->
+        <lớp div="st-chatu8-settings-section">
+            <h3>Ký tự mặc định</h3>
+            <lớp div="st-chatu8-field">
+                <label for="character_preset_id">Mặc định hiện tại</label>
+                <lớp div="st-chatu8-profile-controls">
+                    <select id="character_preset_id" class="st-chatu8-select"></select>
+                    <button class="st-chatu8-icon-btn" id="character_visual_select" title="Lựa chọn trực quan"><i class="fa-solid fa-grip"></i></button>
+                    <button class="st-chatu8-icon-btn" id="character_new" title="Mới"><i class="fa-solid fa-plus"></i></button>
+                    <button class="st-chatu8-icon-btn" id="character_update" title="lưu lại"><i class="fa-solid fa-save"></i></button>
+                    <button class="st-chatu8-icon-btn" id="character_save_as" title="lưu dưới dạng"><i class="fa-solid fa-file-export"></i></button>
+                    <button class="st-chatu8-icon-btn" id="character_export" title="Xuất khẩu"><i class="fa-solid fa-upload"></i></button>
+                    <button class="st-chatu8-icon-btn" id="character_export_all" title="Xuất tất cả"><i class="fa-solid fa-cloud-upload-alt"></i></button>
+                    <button class="st-chatu8-icon-btn" id="character_import" title="nhập khẩu"><i class="fa-solid fa-download"></i></button>
+                    <button class="st-chatu8-icon-btn danger" id="character_delete" title="Xóa"><i class="fa-solid fa-trash"></i></nút>
+                </div>
+            </div>
+        </div>
+
+        <!-- Khu vực ảnh nhân vật -->
+        <lớp div="st-chatu8-settings-section">
+            <h3>Ảnh nhân vật</h3>
+            <lớp div="st-chatu8-field-col" style="display: flex; flex-direction: column; align-items: center;">
+                <div class="st-chatu8-character-photo-container" id="char_photo_container" style="display: flex; justify-content: center;">
+                    <img id="char_photo_preview" src="" style="display: none; max-width: 100%; max-height: 300px; border-radius: 8px; object-fit: contain;">
+                    <div class="st-chatu8-image-placeholder" id="char_photo_placeholder" style="width: 200px; height: 200px; display: flex; align-items: center; justify-content: center; background: var(--SmartThemeBlurTintColor); border-radius: 8px;">
+                        <i class="fa-solid fa-image" style="font-size: 48px; opacity: 0.5;"></i>
+                    </div>
+                </div>
+                <input type="file" id="char_photo_upload_input" accept="image/*" style="display: none;">
+                <button class="st-chatu8-btn" id="char_photo_upload" style="margin-top: 10px;">
+                    <i class="fa-solid fa-upload"></i> Tải ảnh lên
+                </button>
+                <lớp div="st-chatu8-field" style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+                    <label for="char_send_photo" class="st-chatu8-checkbox-label" style="margin: 0; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                        <input type="checkbox" id="char_send_photo" class="st-chatu8-checkbox">
+                        <span>Gửi ảnh</span>
+                    </nhãn>
+                </div>
+            </div>
+
+            <lớp div="st-chatu8-field-col" style="margin-top: 10px;">
+                <label for="char_photo_prompt">Từ nhắc nhở</label>
+                <id vùng văn bản="char_photo_prompt" class="st-chatu8-textarea" rows="3" placeholder="Nhập từ gợi ý được sử dụng để tạo hình ảnh ký tự..."></textarea>
+                <div id="char_photo_prompt-results" class="ch-autocomplete-results"></div>
+            </div>
+            <div class="st-chatu8-field" style="margin-top: 10px; display: flex; gap: 10px; flex-wrap: wrap;">
+                <button class="st-chatu8-btn" id="char_photo_generate" style="flex: 1; min-width: 120px;">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Tạo hình ảnh
+                </button>
+                <lớp nút="st-chatu8-btn" id="char_photo_generate_prompt" style="flex: 1; min-width: 120px;">
+                    <i class="fa-solid fa-lightbulb"></i> Tạo từ gợi ý bằng hình ảnh
+                </button>
+                <lớp nút="st-chatu8-btn" id="char_photo_modify_character_prompt" style="flex: 1; min-width: 120px;">
+                    <i class="fa-solid fa-pen-to-square"></i> Sửa đổi lời nhắc ký tự
+                </button>
+                <lớp nút="st-chatu8-btn" id="char_photo_character_data" style="flex: 1; min-width: 120px;">
+                    <i class="fa-solid fa-database"></i>Dữ liệu ký tự
+                </button>
+                <lớp nút="st-chatu8-btn" id="char_photo_prompt_translate" style="flex: 1; min-width: 120px;">
+                    <i class="fa-solid fa-language"></i>Dịch thuật
+                </button>
+            </div>
+        </div>
+
+        <!-- Vùng tham số vai trò -->
+        <lớp div="st-chatu8-settings-section">
+            <h3>Thông số chi tiết ký tự</h3>
+            <lớp div="st-chatu8-field-col">
+                <label for="char_nameCN">Ký tựTên tiếng Trung</label>
+                <loại đầu vào="text" id="char_nameCN" class="st-chatu8-text-input" />
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="char_nameEN">Tên tiếng Anh của ký tự</label>
+                <loại đầu vào="text" id="char_nameEN" class="st-chatu8-text-input" />
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="char_characterTraits">Đặc điểm</label>
+                <id vùng văn bản="char_characterTraits" class="st-chatu8-textarea" rows="3"></textarea>
+                <div id="char_characterTraits-results" class="ch-autocomplete-results"></div>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="char_facialFeatures">Ngoại hình khuôn mặt</label>
+                <id vùng văn bản="char_facialFeatures" class="st-chatu8-textarea" rows="3"></textarea>
+                <div id="char_facialFeatures-results" class="ch-autocomplete-results"></div>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="char_facialFeaturesBack">Mặt sau của các đặc điểm trên khuôn mặt</label>
+                <id vùng văn bản="char_facialFeaturesBack" class="st-chatu8-textarea" rows="3"></textarea>
+                <div id="char_facialFeaturesBack-results" class="ch-autocomplete-results"></div>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="char_upperBodySFW">SFW phần thân trên</label>
+                <id vùng văn bản="char_upperBodySFW" class="st-chatu8-textarea" rows="3"></textarea>
+                <div id="char_upperBodySFW-results" class="ch-autocomplete-results"></div>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="char_upperBodySFWBack">SFW phía sau phần trên cơ thể</label>
+                <id vùng văn bản="char_upperBodySFWBack" class="st-chatu8-textarea" rows="3"></textarea>
+                <div id="char_upperBodySFWBack-results" class="ch-autocomplete-results"></div>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="char_fullBodySFW">SFW phần thân dưới</label>
+                <id vùng văn bản="char_fullBodySFW" class="st-chatu8-textarea" rows="3"></textarea>
+                <div id="char_fullBodySFW-results" class="ch-autocomplete-results"></div>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="char_fullBodySFWBack">Mặt sau SFW phần thân dưới</label>
+                <id vùng văn bản="char_fullBodySFWBack" class="st-chatu8-textarea" rows="3"></textarea>
+                <div id="char_fullBodySFWBack-results" class="ch-autocomplete-results"></div>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="char_upperBodyNSFW">NSFW phần thân trên</label>
+                <id vùng văn bản="char_upperBodyNSFW" class="st-chatu8-textarea" rows="3"></textarea>
+                <div id="char_upperBodyNSFW-results" class="ch-autocomplete-results"></div>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="char_upperBodyNSFWBack">NSFW phía sau phần thân trên</label>
+                <id vùng văn bản="char_upperBodyNSFWBack" class="st-chatu8-textarea" rows="3"></textarea>
+                <div id="char_upperBodyNSFWBack-results" class="ch-autocomplete-results"></div>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="char_fullBodyNSFW">NSFW phần thân dưới</label>
+                <id vùng văn bản="char_fullBodyNSFW" class="st-chatu8-textarea" rows="3"></textarea>
+                <div id="char_fullBodyNSFW-results" class="ch-autocomplete-results"></div>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="char_fullBodyNSFWBack">NSFW phía sau phần thân dưới</label>
+                <id vùng văn bản="char_fullBodyNSFWBack" class="st-chatu8-textarea" rows="3"></textarea>
+                <div id="char_fullBodyNSFWBack-results" class="ch-autocomplete-results"></div>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="char_negative">Tiêu cực</label>
+                <id vùng văn bản="char_negative" class="st-chatu8-textarea" rows="3" placeholder="Những lời ám chỉ tiêu cực..."></textarea>
+                <div id="char_negative-results" class="ch-autocomplete-results"></div>
+                <span class="st-chatu8-unsaved-warning" style="display: none;">Chưa lưu</span>
+            </div>
+            
+            <lớp div="st-chatu8-field" style="margin-top: 10px; display: flex; gap: 10px;">
+                <button class="st-chatu8-btn" id="char_translate" style="flex: 1;">
+                    <i class="fa-solid fa-language"></i>Dịch thuật
+                </button>
+                <lớp nút="st-chatu8-btn" id="char_clear_details" style="flex: 1;">
+                    <i class="fa-solid fa-trash-can"></i>Xóa thông số chi tiết
+                </button>
+            </div>
+            
+            <!-- Quản lý danh sách quần áo -->
+            <lớp div="st-chatu8-field-col">
+                <label for="char_outfit_list">Danh sách trang phục (một tên trang phục trên mỗi dòng)</label>
+                <id vùng văn bản="char_outfit_list" class="st-chatu8-textarea" rows="5" placeholder="Nhập tên quần áo, mỗi dòng một tên"></textarea>
+            </div>
+            
+            <div class="st-chatu8-field" style="margin-top: 10px;">
+                <button class="st-chatu8-btn" id="char_outfit_check" style="width: 100%;">
+                    <i class="fa-solid fa-check-circle"></i>Phát hiện quần áo có tồn tại hay không
+                </button>
+            </div>
+
+            <lớp div="st-chatu8-field" style="margin-top: 15px;">
+                <label for="char_outfit_selector">Chọn từ các cài đặt trước quần áo</label>
+                <kiểu div="display: flex; gap: 10px; align-items: center; min-width: 0; overflow: hidden; flex-wrap: wrap;">
+                    <select id="char_outfit_selector" class="st-chatu8-select" style="flex: 1; min-width: 0; max-width: 300px;"></select>
+                    <button class="st-chatu8-icon-btn" id="char_outfit_refresh" title="Làm mới danh sách">
+                        <i class="fa-solid fa-refresh"></i>
+                    </button>
+                    <button class="st-chatu8-btn" id="char_outfit_add">
+                        <i class="fa-solid fa-plus"></i>Thêm
+                    </button>
+                </div>
+            </div>
+
+            <div id="char_outfit_check_result" class="st-chatu8-field-col" style="margin-top: 15px; display: none;">
+                <label>Kết quả kiểm tra</label>
+                <div id="char_outfit_check_content" style="padding: 10px; background: var(--SmartThemeBlurTintColor); border-radius: 5px; max-height: 200px; overflow-y: auto;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trang con quản lý quần áo -->
+    <div id="ch-sub-tab-outfit-settings" class="st-chatu8-sub-tab-content" style="display: none;">
+        <!-- Quản lý mặc định -->
+        <lớp div="st-chatu8-settings-section">
+            <h3>Cài đặt trước quần áo</h3>
+            <lớp div="st-chatu8-field">
+                <label for="outfit_preset_id">Mặc định hiện tại</label>
+                <lớp div="st-chatu8-profile-controls">
+                    <select id="outfit_preset_id" class="st-chatu8-select"></select>
+                    <button class="st-chatu8-icon-btn" id="outfit_visual_select" title="Lựa chọn trực quan"><i class="fa-solid fa-grip"></i></button>
+                    <button class="st-chatu8-icon-btn" id="outfit_new" title="Mới"><i class="fa-solid fa-plus"></i></button>
+                    <button class="st-chatu8-icon-btn" id="outfit_update" title="lưu lại"><i class="fa-solid fa-save"></i></button>
+                    <button class="st-chatu8-icon-btn" id="outfit_save_as" title="lưu dưới dạng"><i class="fa-solid fa-file-export"></i></button>
+                    <button class="st-chatu8-icon-btn" id="outfit_export" title="Xuất khẩu"><i class="fa-solid fa-upload"></i></button>
+                    <button class="st-chatu8-icon-btn" id="outfit_export_all" title="Xuất tất cả"><i class="fa-solid fa-cloud-upload-alt"></i></button>
+                    <button class="st-chatu8-icon-btn" id="outfit_import" title="nhập khẩu"><i class="fa-solid fa-download"></i></button>
+                    <button class="st-chatu8-icon-btn danger" id="outfit_delete" title="Xóa"><i class="fa-solid fa-trash"></i></nút>
+                </div>
+            </div>
+        </div>
+
+        <!-- Khu vực chụp ảnh quần áo -->
+        <lớp div="st-chatu8-settings-section">
+            <h3>Ảnh quần áo</h3>
+            <lớp div="st-chatu8-field-col" style="display: flex; flex-direction: column; align-items: center;">
+                <div class="st-chatu8-character-photo-container" id="outfit_photo_container" style="display: flex; justify-content: center;">
+                    <img id="outfit_photo_preview" src="" style="display: none; max-width: 100%; max-height: 300px; border-radius: 8px; object-fit: contain;">
+                    <div class="st-chatu8-image-placeholder" id="outfit_photo_placeholder" style="width: 200px; height: 200px; display: flex; align-items: center; justify-content: center; background: var(--SmartThemeBlurTintColor); border-radius: 8px;">
+                        <i class="fa-solid fa-shirt" style="font-size: 48px; opacity: 0.5;"></i>
+                    </div>
+                </div>
+                <input type="file" id="outfit_photo_upload_input" accept="image/*" style="display: none;">
+                <button class="st-chatu8-btn" id="outfit_photo_upload" style="margin-top: 10px;">
+                    <i class="fa-solid fa-upload"></i> Tải ảnh lên
+                </button>
+                <lớp div="st-chatu8-field" style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+                    <label for="outfit_send_photo" class="st-chatu8-checkbox-label" style="margin: 0; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                        <input type="checkbox" id="outfit_send_photo" class="st-chatu8-checkbox">
+                        <span>Gửi ảnh</span>
+                    </nhãn>
+                </div>
+            </div>
+
+            <lớp div="st-chatu8-field-col" style="margin-top: 10px;">
+                <label for="outfit_photo_prompt">Từ nhắc nhở</label>
+                <id vùng văn bản="outfit_photo_prompt" class="st-chatu8-textarea" rows="3" placeholder="Nhập từ gợi ý được sử dụng để tạo hình ảnh quần áo..."></textarea>
+                <div id="outfit_photo_prompt-results" class="ch-autocomplete-results"></div>
+            </div>
+            <div class="st-chatu8-field" style="margin-top: 10px; display: flex; gap: 10px; flex-wrap: wrap;">
+                <button class="st-chatu8-btn" id="outfit_photo_generate" style="flex: 1; min-width: 120px;">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Tạo hình ảnh
+                </button>
+                <lớp nút="st-chatu8-btn" id="outfit_photo_generate_prompt" style="flex: 1; min-width: 120px;">
+                    <i class="fa-solid fa-lightbulb"></i> Tạo từ gợi ý bằng hình ảnh
+                </button>
+                <lớp nút="st-chatu8-btn" id="outfit_photo_modify_prompt" style="flex: 1; min-width: 120px;">
+                    <i class="fa-solid fa-pen-to-square"></i> Sửa đổi lời nhắc về quần áo
+                </button>
+                <lớp nút="st-chatu8-btn" id="outfit_photo_prompt_translate" style="flex: 1; min-width: 120px;">
+                    <i class="fa-solid fa-language"></i>Dịch thuật
+                </button>
+            </div>
+        </div>
+
+        <!-- Vùng thông số quần áo -->
+        <lớp div="st-chatu8-settings-section">
+            <h3>Thông số chi tiết của quần áo</h3>
+
+            <lớp div="st-chatu8-field-col">
+                <label for="outfit_nameCN">Tên quần áo bằng tiếng Trung</label>
+                <loại đầu vào="text" id="outfit_nameCN" class="st-chatu8-text-input" />
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="outfit_nameEN">Tên tiếng Anh của quần áo</label>
+                <loại đầu vào="text" id="outfit_nameEN" class="st-chatu8-text-input" />
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="outfit_upperBody">Phần thân trên</label>
+                <id vùng văn bản="outfit_upperBody" class="st-chatu8-textarea" rows="4"></textarea>
+                <div id="outfit_upperBody-results" class="ch-autocomplete-results"></div>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="outfit_upperBodyBack">Mặt sau của phần thân trên</label>
+                <id vùng văn bản="outfit_upperBodyBack" class="st-chatu8-textarea" rows="4"></textarea>
+                <div id="outfit_upperBodyBack-results" class="ch-autocomplete-results"></div>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="outfit_fullBody">Quần áo ở phần dưới cơ thể</label>
+                <id vùng văn bản="outfit_fullBody" class="st-chatu8-textarea" rows="4"></textarea>
+                <div id="outfit_fullBody-results" class="ch-autocomplete-results"></div>
+            </div>
+            <div class="st-chatu8-field-col">
+                <label for="outfit_fullBodyBack">Mặt sau của phần thân dưới</label>
+                <id vùng văn bản="outfit_fullBodyBack" class="st-chatu8-textarea" rows="4"></textarea>
+                <div id="outfit_fullBodyBack-results" class="ch-autocomplete-results"></div>
+            </div>
+            
+            <div class="st-chatu8-field" style="margin-top: 10px; display: flex; gap: 10px;">
+                <button class="st-chatu8-btn" id="outfit_translate" style="flex: 1;">
+                    <i class="fa-solid fa-language"></i>Dịch thuật
+                </button>
+                <lớp nút="st-chatu8-btn" id="outfit_clear_details" style="flex: 1;">
+                    <i class="fa-solid fa-trash-can"></i>Xóa thông số chi tiết
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trang phụ quản lý kích hoạt vai trò -->
+    <div id="ch-sub-tab-character-enable" class="st-chatu8-sub-tab-content" style="display: none;">
+        <!-- Quản lý mặc định -->
+        <lớp div="st-chatu8-settings-section">
+            <h3>Mặc định kích hoạt nhân vật</h3>
+            <lớp div="st-chatu8-field">
+                <label for="character_enable_preset_id">Mặc định hiện tại</label>
+                <lớp div="st-chatu8-profile-controls">
+                    <select id="character_enable_preset_id" class="st-chatu8-select"></select>
+                    <button class="st-chatu8-icon-btn" id="character_enable_update" title="lưu lại"><i class="fa-solid fa-save"></i></button>
+                    <button class="st-chatu8-icon-btn" id="character_enable_save_as" title="lưu dưới dạng"><i class="fa-solid fa-file-export"></i></button>
+                    <button class="st-chatu8-icon-btn" id="character_enable_export" title="Xuất khẩu"><i class="fa-solid fa-upload"></i></button>
+                    <button class="st-chatu8-icon-btn" id="character_enable_export_all" title="Xuất tất cả"><i class="fa-solid fa-cloud-upload-alt"></i></button>
+                    <button class="st-chatu8-icon-btn" id="character_enable_import" title="nhập khẩu"><i class="fa-solid fa-download"></i></button>
+                    <button class="st-chatu8-icon-btn danger" id="character_enable_delete" title="Xóa"><i class="fa-solid fa-trash"></i></nút>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quản lý danh sách vai trò -->
+        <lớp div="st-chatu8-settings-section">
+            <h3>Bật danh sách vai trò</h3>
+            <lớp div="st-chatu8-field-col">
+                <label for="character_enable_list">Danh sách ký tự (mỗi dòng một tên ký tự)</label>
+                <id vùng văn bản="character_enable_list" class="st-chatu8-textarea" rows="10" placeholder="Nhập tên ký tự, mỗi tên một dòng"></textarea>
+            </div>
+            
+            <div class="st-chatu8-field" style="margin-top: 10px;">
+                <button class="st-chatu8-btn" id="character_enable_check" style="width: 100%;">
+                    <i class="fa-solid fa-check-circle"></i> Kiểm tra xem vai trò có tồn tại không
+                </button>
+            </div>
+
+            <lớp div="st-chatu8-field" style="margin-top: 15px;">
+                <label for="character_enable_selector">Chọn từ cài đặt ký tự</label>
+                <kiểu div="display: flex; gap: 10px; align-items: center; min-width: 0; overflow: hidden; flex-wrap: wrap;">
+                    <select id="character_enable_selector" class="st-chatu8-select" style="flex: 1; min-width: 0; max-width: 300px;"></select>
+                    <button class="st-chatu8-icon-btn" id="character_enable_refresh" title="Làm mới danh sách">
+                        <i class="fa-solid fa-refresh"></i>
+                    </button>
+                    <button class="st-chatu8-btn" id="character_enable_add">
+                        <i class="fa-solid fa-plus"></i>Thêm
+                    </button>
+                </div>
+            </div>
+
+            <div id="character_enable_check_result" class="st-chatu8-field-col" style="margin-top: 15px; display: none;">
+                <label>Kết quả kiểm tra</label>
+                <div id="character_enable_check_content" style="padding: 10px; background: var(--SmartThemeBlurTintColor); border-radius: 5px; max-height: 200px; overflow-y: auto;"></div>
+            </div>
+
+            <div class="st-chatu8-field-col" style="margin-top: 15px;">
+                <label for="character_enable_test_input">Kiểm tra từ kích hoạt</label>
+                <id vùng văn bản="character_enable_test_input" class="st-chatu8-textarea" rows="4" placeholder="Nhập bất kỳ định dạng được hỗ trợ nào và mở rộng bên dưới để xem ví dụ"></textarea>
+                <details style="margin-top: 6px;">
+                    <summary style="cursor: pointer; color: var(--SmartThemeEmColor);">Các định dạng đầu vào được hỗ trợ (nhấp để mở rộng)</tóm tắt>
+                    <ul phong cách="margin: 6px 0 0 0; padding-left: 20px; font-size: 0.9em; line-height: 1.6;">
+                        <li><strong>Thẻ vai trò định dạng cũ:</strong><code>$role name-sfw-upperbody$</code>, <code>$role name-nsfw-upperbody-sfw-lowbody$</code></li>
+                        <li><strong>Thẻ vai trò JSON:</strong><code>${"name":"Tên nhân vật","angle":"from front","upperBody":"sfw","lowerBody":"hidden"}$</code></li>
+                        <li><strong>Nhiều ký tự (nhiều $...$ trong một thẻ):</strong><code>$Tiểu Hồng-sfw-upperbody$, đứng, $Tiểu Lân-sfw-upperbody$, mỉm cười</code></li>
+                        <li phong cách="color: var(--SmartThemeEmColor);">Để gỡ lỗi · Chỉ nhận dạng tên: <code>Tên ký tự</code>, <code>Tên ký tự [hiện tại]</code> (quá trình thay thế thực tế không nhận dạng các tên trần như vậy)</li>
+                    </ul>
+                    <kiểu div="margin-top: 6px; font-size: 0.85em; color: var(--SmartThemeEmColor);">
+                        Bài kiểm tra chỉ thực hiện "khớp tên": trích xuất tên nhân vật từ đầu vào, sau đó nhấn danh sách kích hoạt để kiểm tra xem có nhấn hay không. Quá trình thay thế hoàn toàn sẽ không được thực hiện. <br>
+                        Phân tích cú pháp chính thức yêu cầu <code>$...$</code> phải là "tên + hậu tố định dạng cũ" hoặc một đối tượng JSON; <code>$role name$</code> sẽ được giữ nguyên trong quá trình thay thế thực tế. <br>
+                        Nếu có nhiều phân đoạn <code>$...$</code> trong đầu vào, chúng sẽ tự động được xác định theo phân đoạn theo cách đa vai trò và kết quả của từng phân đoạn sẽ được hiển thị trong một bảng.
+                    </div>
+                </ chi tiết>
+            </div>
+
+            <lớp div="st-chatu8-field" style="margin-top: 10px;">
+                <button class="st-chatu8-btn" id="character_enable_test" style="width: 100%;">
+                    <i class="fa-solid fa-flask"></i>Kiểm tra việc khớp tên ký tự
+                </button>
+            </div>
+
+            <div id="character_enable_test_result" class="st-chatu8-field-col" style="margin-top: 15px; display: none;">
+                <label>Kết quả kiểm tra</label>
+                <div id="character_enable_test_content" style="padding: 10px; background: var(--SmartThemeBlurTintColor); border-radius: 5px; max-height: 240px; overflow-y: auto;"></div>
+            </div>
+
+            <hr style="margin: 20px 0; border-color: var(--SmartThemeBorderColor);">
+
+            <div class="st-chatu8-field-col">
+                <label for="character_list_test_input">{{danh sách hỗ trợ vai trò}} kiểm tra kích hoạt</label>
+                <id vùng văn bản="character_list_test_input" class="st-chatu8-textarea" rows="4" placeholder="Dán văn bản kích hoạt (ví dụ: yêu cầu của người dùng/ngữ cảnh/nội dung kích hoạt sách thế giới) để xem những ký tự nào trong danh sách kích hoạt sẽ được đưa vào"></textarea>
+                <details style="margin-top: 6px;">
+                    <summary style="cursor: pointer; color: var(--SmartThemeEmColor);">{{Danh sách kích hoạt vai trò}} Mô tả quy tắc kích hoạt và sự khác biệt so với "Kích hoạt vai trò" (nhấp để mở rộng)</summary>
+                    <ul phong cách="margin: 6px 0 0 0; padding-left: 20px; font-size: 0.9em; line-height: 1.6;">
+                        <li><strong>Nguồn kích hoạt:</strong>Chỉ quét các ký tự đã đăng ký trong "Mặc định kích hoạt ký tự" hiện tại.<u>Không</u>Đi qua danh sách chung,<u>Không</u>Bám sát các giá trị mặc định chung.</li>
+                        <li><strong>Phương pháp so khớp:</strong>Đưa vào chuỗi con cho tên tiếng Trung/tên tiếng Anh của từng vai trò được bật.</li>
+                        <li><strong>Tênchia đôi：</strong>Hỗ trợ tên <code>|</code> Chia nhiều bí danh và bất kỳ lần truy cập nào đều được coi là kích hoạt.</li>
+                        <li><strong>Trường hợp/không gian:</strong>Tất cả đã bị bỏ qua (văn bản và tên trình kích hoạt sẽ được so sánh với khoảng trắng bị xóa và chuyển thành chữ thường).</li>
+                        <li><strong>Số kết quả:</strong>Có thể đánh nhiều nhân vật cùng một lúc; tất cả các nhân vật được bao gồm <code>{{danh sách kích hoạt vai trò}}</code> văn bản.</li>
+                    </ul>
+                    <div style="margin-top: 8px; font-size: 0.85em; color: var(--SmartThemeEmColor);">
+                        Với "Kích hoạt ký tự (<code>$...$</code> Thay thế)" sự khác biệt:<br>
+                        &nbsp;&nbsp;• <strong>Liệu danh sách có phải được kích hoạt hay không:</strong>kích hoạt danh sách <u>phải</u>Trong danh sách kích hoạt; danh sách kích hoạt kích hoạt ký tự chỉ xác định mức độ ưu tiên và phía dưới sẽ khớp với tất cả các cài đặt trước.<br>
+                        &nbsp;&nbsp;• <strong>Thuật toán so khớp:</strong>Việc kích hoạt danh sách chỉ bao gồm chuỗi; sử dụng kích hoạt vai trò <code>normalizeName</code> + Điểm tương đồng.<br>
+                        &nbsp;&nbsp;• <strong>Số lượt truy cập:</strong>Trình kích hoạt danh sách có thể có nhiều mục; ký tự kích hoạt mỗi <code>$...$</code> Đoạn này chỉ cần một kết quả phù hợp nhất.<br>
+                        &nbsp;&nbsp;• <strong>Mẫu đầu vào:</strong>Trình kích hoạt danh sách chấp nhận bất kỳ văn bản tự nhiên nào; yêu cầu kích hoạt vai trò <code>$...$</code> Bên trong là hậu tố định dạng cũ hoặc đối tượng JSON.
+                    </div>
+                </details>
+            </div>
+
+            <div class="st-chatu8-field" style="margin-top: 10px;">
+                <button class="st-chatu8-btn" id="character_list_test" style="width: 100%;">
+                    <i class="fa-solid fa-list-check"></i>Kiểm tra trình kích hoạt {{role Enablement list}}
+                </button>
+            </div>
+
+            <div id="character_list_test_result" class="st-chatu8-field-col" style="margin-top: 15px; display: none;">
+                <label>Kết quả kiểm tra</label>
+                <div id="character_list_test_content" style="padding: 10px; background: var(--SmartThemeBlurTintColor); border-radius: 5px; max-height: 320px; overflow-y: auto;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Kích hoạt trang con danh sách quần áo phổ thông -->
+    <div id="ch-sub-tab-outfit-enable" class="st-chatu8-sub-tab-content" style="display: none;">
+        <!-- Quản lý mặc định -->
+        <lớp div="st-chatu8-settings-section">
+            <h3>Mặc định danh sách quần áo phổ thông</h3>
+            <lớp div="st-chatu8-field">
+                <label for="outfit_enable_preset_id">Mặc định hiện tại</label>
+                <lớp div="st-chatu8-profile-controls">
+                    <select id="outfit_enable_preset_id" class="st-chatu8-select"></select>
+                    <button class="st-chatu8-icon-btn" id="outfit_enable_update" title="lưu lại"><i class="fa-solid fa-save"></i></button>
+                    <button class="st-chatu8-icon-btn" id="outfit_enable_save_as" title="lưu dưới dạng"><i class="fa-solid fa-file-export"></i></button>
+                    <button class="st-chatu8-icon-btn" id="outfit_enable_export" title="Xuất khẩu"><i class="fa-solid fa-upload"></i></button>
+                    <button class="st-chatu8-icon-btn" id="outfit_enable_export_all" title="Xuất tất cả"><i class="fa-solid fa-cloud-upload-alt"></i></button>
+                    <button class="st-chatu8-icon-btn" id="outfit_enable_import" title="nhập khẩu"><i class="fa-solid fa-download"></i></button>
+                    <button class="st-chatu8-icon-btn danger" id="outfit_enable_delete" title="Xóa"><i class="fa-solid fa-trash"></i></nút>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quản lý danh sách quần áo -->
+        <lớp div="st-chatu8-settings-section">
+            <h3>Danh sách quần áo phổ thông</h3>
+            <lớp div="st-chatu8-field-col">
+                <label for="outfit_enable_list">Danh sách trang phục (một tên trang phục trên mỗi dòng)</label>
+                <id vùng văn bản="outfit_enable_list" class="st-chatu8-textarea" rows="10" placeholder="Nhập tên quần áo, mỗi dòng một tên"></textarea>
+            </div>
+            
+            <div class="st-chatu8-field" style="margin-top: 10px;">
+                <button class="st-chatu8-btn" id="outfit_enable_check" style="width: 100%;">
+                    <i class="fa-solid fa-check-circle"></i>Phát hiện quần áo có tồn tại hay không
+                </button>
+            </div>
+
+            <lớp div="st-chatu8-field" style="margin-top: 15px;">
+                <label for="outfit_enable_selector">Chọn từ các cài đặt trước quần áo</label>
+                <kiểu div="display: flex; gap: 10px; align-items: center; min-width: 0; overflow: hidden; flex-wrap: wrap;">
+                    <select id="outfit_enable_selector" class="st-chatu8-select" style="flex: 1; min-width: 0; max-width: 300px;"></select>
+                    <button class="st-chatu8-icon-btn" id="outfit_enable_refresh" title="Làm mới danh sách">
+                        <i class="fa-solid fa-refresh"></i>
+                    </button>
+                    <button class="st-chatu8-btn" id="outfit_enable_add">
+                        <i class="fa-solid fa-plus"></i>Thêm
+                    </button>
+                </div>
+            </div>
+
+            <div id="outfit_enable_check_result" class="st-chatu8-field-col" style="margin-top: 15px; display: none;">
+                <label>Kết quả kiểm tra</label>
+                <div id="outfit_enable_check_content" style="padding: 10px; background: var(--SmartThemeBlurTintColor); border-radius: 5px; max-height: 200px; overflow-y: auto;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Kích hoạt trang con danh sách vai trò phổ quát -->
+    <div id="ch-sub-tab-character-common" class="st-chatu8-sub-tab-content" style="display: none;">
+        <!-- Quản lý mặc định -->
+        <lớp div="st-chatu8-settings-section">
+            <h3>Mặc định danh sách ký tự chung</h3>
+            <lớp div="st-chatu8-field">
+                <label for="character_common_preset_id">Mặc định hiện tại</label>
+                <lớp div="st-chatu8-profile-controls">
+                    <select id="character_common_preset_id" class="st-chatu8-select"></select>
+                    <button class="st-chatu8-icon-btn" id="character_common_update" title="lưu lại"><i class="fa-solid fa-save"></i></button>
+                    <button class="st-chatu8-icon-btn" id="character_common_save_as" title="lưu dưới dạng"><i class="fa-solid fa-file-export"></i></button>
+                    <button class="st-chatu8-icon-btn" id="character_common_export" title="Xuất khẩu"><i class="fa-solid fa-upload"></i></button>
+                    <button class="st-chatu8-icon-btn" id="character_common_export_all" title="Xuất tất cả"><i class="fa-solid fa-cloud-upload-alt"></i></button>
+                    <button class="st-chatu8-icon-btn" id="character_common_import" title="nhập khẩu"><i class="fa-solid fa-download"></i></button>
+                    <button class="st-chatu8-icon-btn danger" id="character_common_delete" title="Xóa"><i class="fa-solid fa-trash"></i></nút>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quản lý danh sách vai trò -->
+        <lớp div="st-chatu8-settings-section">
+            <h3>Danh sách vai trò phổ quát</h3>
+            <lớp div="st-chatu8-field-col">
+                <label for="character_common_list">Danh sách ký tự (mỗi dòng một tên ký tự)</label>
+                <id vùng văn bản="character_common_list" class="st-chatu8-textarea" rows="10" placeholder="Nhập tên ký tự, mỗi tên một dòng"></textarea>
+            </div>
+            
+            <div class="st-chatu8-field" style="margin-top: 10px;">
+                <button class="st-chatu8-btn" id="character_common_check" style="width: 100%;">
+                    <i class="fa-solid fa-check-circle"></i> Kiểm tra xem vai trò có tồn tại không
+                </button>
+            </div>
+
+            <lớp div="st-chatu8-field" style="margin-top: 15px;">
+                <label for="character_common_selector">Chọn từ cài đặt ký tự</label>
+                <kiểu div="display: flex; gap: 10px; align-items: center; min-width: 0; overflow: hidden; flex-wrap: wrap;">
+                    <select id="character_common_selector" class="st-chatu8-select" style="flex: 1; min-width: 0; max-width: 300px;"></select>
+                    <button class="st-chatu8-icon-btn" id="character_common_refresh" title="Làm mới danh sách">
+                        <i class="fa-solid fa-refresh"></i>
+                    </button>
+                    <button class="st-chatu8-btn" id="character_common_add">
+                        <i class="fa-solid fa-plus"></i>Thêm
+                    </button>
+                </div>
+            </div>
+
+            <div id="character_common_check_result" class="st-chatu8-field-col" style="margin-top: 15px; display: none;">
+                <label>Kết quả kiểm tra</label>
+                <div id="character_common_check_content" style="padding: 10px; background: var(--SmartThemeBlurTintColor); border-radius: 5px; max-height: 200px; overflow-y: auto;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trang con quản lý vai trò chuối -->
+    <div id="ch-sub-tab-banana-character" class="st-chatu8-sub-tab-content" style="display: none;">
+        <!-- Quản lý mặc định -->
+        <lớp div="st-chatu8-settings-section">
+            <h3>Đặt trước ký tự chuối</h3>
+            <lớp div="st-chatu8-field">
+                <label for="banana_char_preset_id">Mặc định hiện tại</label>
+                <lớp div="st-chatu8-profile-controls">
+                    <select id="banana_char_preset_id" class="st-chatu8-select"></select>
+                    <button class="st-chatu8-icon-btn" id="banana_char_update" title="lưu lại"><i class="fa-solid fa-save"></i></button>
+                    <button class="st-chatu8-icon-btn" id="banana_char_save_as" title="lưu dưới dạng"><i class="fa-solid fa-file-export"></i></button>
+                    <button class="st-chatu8-icon-btn danger" id="banana_char_delete" title="Xóa"><i class="fa-solid fa-trash"></i></nút>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vùng tham số -->
+        <lớp div="st-chatu8-settings-section">
+            <h3>Thông số chi tiết</h3>
+            <lớp div="st-chatu8-field-col">
+                <label for="banana_char_triggers">Từ kích hoạt (dùng"|"Tách)</label>
+                <id vùng văn bản="banana_char_triggers" class="st-chatu8-textarea" rows="2" placeholder="từ kích hoạt 1 | từ kích hoạt 2"></textarea>
+            </div>
+
+            <div class="st-chatu8-banana-conversation-group">
+                <h4>Nội dung cuộc trò chuyện</h4>
+                <lớp div="st-chatu8-banana-conversation-turn">
+                    <div class="st-chatu8-banana-turn-user">
+                        <h5>User</h5>
+                        <textarea id="banana_char_user_text" class="st-chatu8-textarea" rows="3" placeholder="Văn bản của người dùng..."></textarea>
+                        <div class="st-chatu8-image-preview-container small" id="banana_char_user_image_container">
+                            <img id="banana_char_user_image" src="" style="display:none;">
+                            <div class="st-chatu8-image-placeholder"><i class="fa-solid fa-image"></i></div>
+                            <button class="st-chatu8-icon-btn danger top-right" id="banana_char_user_image_remove" style="display:none;"><i class="fa-solid fa-xmark"></i></button>
+                            <input type="file" id="banana_char_user_image_input" accept="image/*" style="display:none;">
+                        </div>
+                    </div>
+                    <div class="st-chatu8-banana-turn-model">
+                        <h5>Model</h5>
+                        <textarea id="banana_char_model_text" class="st-chatu8-textarea" rows="3" placeholder="văn bản mẫu..."></textarea>
+                        <div class="st-chatu8-image-preview-container small" id="banana_char_model_image_container">
+                            <img id="banana_char_model_image" src="" style="display:none;">
+                            <div class="st-chatu8-image-placeholder"><i class="fa-solid fa-image"></i></div>
+                            <button class="st-chatu8-icon-btn danger top-right" id="banana_char_model_image_remove" style="display:none;"><i class="fa-solid fa-xmark"></i></button>
+                            <input type="file" id="banana_char_model_image_input" accept="image/*" style="display:none;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

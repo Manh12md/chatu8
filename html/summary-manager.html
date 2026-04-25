@@ -1,0 +1,44 @@
+<div id="st-chatu8-summary-manager" class="st-chatu8-summary-manager" style="display:none;">
+    <!-- Thanh công cụ trên cùng -->
+    <lớp div="summary-toolbar">
+        <div class="summary-toolbar-left">
+            <span class="summary-title"><i class="fa-solid fa-layer-group"></i>Tóm tắt cuộc trò chuyện</span>
+        </div>
+        <lớp div="summary-toolbar-actions">
+            <button id="summary-toggle-multiselect" class="summary-btn summary-btn--outline" title="Bật chế độ chọn nhiều">
+                <i class="fa-solid fa-check-double"></i> Nhiều lựa chọn
+            </button>
+            <id nút="summary-generate-selected-btn" class="summary-btn summary-btn--primary" disabled title="Tạo bản tóm tắt tổng hợp của các mục đã chọn">
+                <i class="fa-solid fa-compress-alt"></i> Đã chọn tóm tắt
+            </button>
+            <id nút="summary-enable-selected-btn" class="summary-btn summary-btn--success" disabled title="Bật tóm tắt đã chọn">
+                <i class="fa-solid fa-check"></i>Bật
+            </button>
+            <id nút="summary-disable-selected-btn" class="summary-btn summary-btn--warning" disabled title="Không thể bật tóm tắt đã chọn">
+                <i class="fa-solid fa-times"></i>Tắt
+            </button>
+        </div>
+        <id nút="summary-close-btn" class="summary-btn summary-btn--icon" title="đóng">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+
+    <!-- Thanh nhắc trạng thái -->
+    <div id="summary-status-bar" class="summary-status-bar" style="display:none;"></div>
+
+    <!-- Nội dung: Hộp cuộn ngang -->
+    <lớp div="summary-body">
+        <div class="summary-columns" id="summary-columns">
+            <!-- Lớp kết nối SVG (định vị tuyệt đối, cuộn theo cột) -->
+            <lớp svg="summary-svg-lines" id="summary-svg-lines" xmlns="http://www.w3.org/2000/svg"></svg>
+            <!-- JS tự động tạo các cột theo thứ bậc -->
+        </div>
+    </div>
+
+    <!-- Mẹo dưới cùng -->
+    <lớp div="summary-footer">
+        <span id="summary-enabled-hint" class="summary-enabled-hint"></span>
+        <span id="summary-total-tokens" class="summary-total-tokens"></span>
+        <span class="summary-footer-tip">Mẹo: Bản tóm tắt được kích hoạt sẽ thay thế lịch sử hội thoại của vòng tương ứng và gửi đến AI (15 vòng gần đây nhất luôn được giữ lại)</span>
+    </div>
+</div>

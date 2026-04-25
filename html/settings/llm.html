@@ -1,0 +1,425 @@
+<div id="ch-tab-llm">
+    <div class="st-chatu8-settings-section">
+        <h3>Cài đặt mô hình lớn</h3>
+        <!-- Quản lý mặc định -->
+        <lớp div="st-chatu8-field">
+            <label for="ch-llm_profile_select">Cấu hình LLM</label>
+            <lớp div="st-chatu8-profile-controls">
+                <select id="ch-llm_profile_select" class="st-chatu8-select"></select>
+                <button class="st-chatu8-icon-btn" id="ch-new_llm_profile_button" title="Mới"><i
+                        class="fa-solid fa-plus"></i></button>
+                <button class="st-chatu8-icon-btn" id="ch-save_llm_profile_button" title="lưu lại"><i
+                        class="fa-solid fa-save"></i></button>
+                <button class="st-chatu8-icon-btn" id="ch-rename_llm_profile_button" title="Sửa đổi tên"><i
+                        class="fa-solid fa-pen"></i></button>
+                <button class="st-chatu8-icon-btn" id="ch-import_llm_profile_button" title="nhập khẩu"><i
+                        class="fa-solid fa-file-import"></i></button>
+                <button class="st-chatu8-icon-btn" id="ch-export_llm_profile_button" title="Xuất khẩu"><i
+                        class="fa-solid fa-file-export"></i></button>
+                <button class="st-chatu8-icon-btn danger" id="ch-delete_llm_profile_button" title="Xóa"><i
+                        class="fa-solid fa-trash"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="st-chatu8-settings-section">
+        <!-- Cấu hình API -->
+        <h4>Cấu hình API</h4>
+        <lớp div="st-chatu8-field-col">
+            <label for="ch-llm_api_url">API Base URL</label>
+            <textarea id="ch-llm_api_url" class="st-chatu8-textarea" rows="2"
+                placeholder="Ví dụ: https://api.openai.com/v1"></textarea>
+        </div>
+        <div class="st-chatu8-field-col">
+            <label for="ch-llm_api_key">API Key</label>
+            <div style="position: relative;">
+                <textarea id="ch-llm_api_key" class="st-chatu8-textarea" rows="3" placeholder="Vui lòng nhập Khóa API của bạn" style="-webkit-text-security: disc;"></textarea>
+                <button type="button" id="ch-llm_api_key_toggle" title="Hiển thị/ẩn Khóa API" style="position: absolute; top: 0.4em; right: 0.4em; background: none; border: none; cursor: pointer; color: inherit; opacity: 0.6; padding: 0; font-size: 1em; line-height: 1;">
+                    <i class="fa-solid fa-eye"></i>
+                </button>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="ch-llm_model_select">Lựa chọn mô hình</label>
+            <lớp div="st-chatu8-profile-controls" style="flex-wrap: wrap; gap: 8px;">
+                <select id="ch-llm_model_select" class="st-chatu8-select" style="flex: 0 0 auto; min-width: 150px;"></select>
+                <input type="text" id="ch-llm_model_input" class="st-chatu8-text-input" 
+                    placeholder="Chọn hoặc nhập tên mẫu máy" 
+                    style="flex: 1; min-width: 200px;" />
+                <button class="st-chatu8-btn" id="ch-llm_fetch_models_button" title="Nhận danh sách mô hình">
+                    <i class="fa-solid fa-plug-circle-bolt"></i>
+                    Kết nối và lấy mô hình
+                </button>
+            </div>
+        </div>
+        <lớp div="st-chatu8-field">
+            <label for="ch-llm_stream">Tạo luồng phát trực tuyến</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="ch-llm_stream" type="checkbox" />
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="ch-llm_bypass_proxy">Không thông qua đại lý quán rượu</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="ch-llm_bypass_proxy" type="checkbox" />
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="ch-llm_merge_system_user">Hợp nhất hệ thống và người dùng</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="ch-llm_merge_system_user" type="checkbox" />
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <p style="font-size: 12px; color: var(--st-chatu8-text-secondary); margin-top: 4px;">
+            Khi được bật, khi hợp nhất các tin nhắn liền k��, hệ thống và người dùng sẽ được hợp nhất với nhau thành các vai trò tương tự.
+        </p>
+        <lớp div="st-chatu8-field">
+            <label for="ch-llm_send_images">Gửi ảnh</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="ch-llm_send_images" type="checkbox" />
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <p style="font-size: 12px; color: var(--st-chatu8-text-secondary); margin-top: 4px;">
+            Khi bật, yêu cầu sẽ giữ lại hình ảnh trong tin nhắn (đa phương thức); khi tắt, hình ảnh sẽ được lọc và chỉ có văn bản được gửi đi. Tắt theo mặc định. Vui lòng xác nhận rằng đa phương thức được hỗ trợ. Ví dụ: ds không hỗ trợ nó.
+        </p>
+    </div>
+
+    <lớp div="st-chatu8-settings-section">
+        <!-- Tham số mô hình OpenAI -->
+        <h4>Thông số mô hình</h4>
+        <lớp div="st-chatu8-grid">
+            <div class="st-chatu8-field">
+                <label for="ch-llm_temperature">Temperature</label>
+                <div class="st-chatu8-range-container">
+                    <input class="st-chatu8-range-slider" type="range" id="ch-llm_temperature" min="0" max="2"
+                        step="0.01" value="0.7">
+                    <input class="st-chatu8-range-input" type="number" id="ch-llm_temperature_value"
+                        data-for="ch-llm_temperature" min="0" max="2" step="0.01" value="0.7">
+                </div>
+            </div>
+            <div class="st-chatu8-field">
+                <label for="ch-llm_top_p">Top P</label>
+                <div class="st-chatu8-range-container">
+                    <input class="st-chatu8-range-slider" type="range" id="ch-llm_top_p" min="0" max="1" step="0.01"
+                        value="1">
+                    <input class="st-chatu8-range-input" type="number" id="ch-llm_top_p_value" data-for="ch-llm_top_p"
+                        min="0" max="1" step="0.01" value="1">
+                </div>
+            </div>
+            <div class="st-chatu8-field">
+                <label for="ch-llm_max_tokens">Max Tokens</label>
+                <div class="st-chatu8-range-container">
+                    <input class="st-chatu8-range-slider" type="range" id="ch-llm_max_tokens" min="1" max="30000"
+                        step="1" value="512">
+                    <input class="st-chatu8-range-input" type="number" id="ch-llm_max_tokens_value"
+                        data-for="ch-llm_max_tokens" min="1" max="30000" step="1" value="512">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="st-chatu8-settings-section">
+        <!-- Cấu hình bối cảnh -->
+        <h4>Cấu hình ngữ cảnh</h4>
+        <lớp div="st-chatu8-field">
+            <label for="ch-test_context_select">Ngữ cảnh đặt trước</label>
+            <lớp div="st-chatu8-profile-controls">
+                <select id="ch-test_context_select" class="st-chatu8-select"></select>
+                <button class="st-chatu8-icon-btn" id="ch-new_test_context_button" title="Mới"><i
+                        class="fa-solid fa-plus"></i></button>
+                <button class="st-chatu8-icon-btn" id="ch-save_test_context_button" title="lưu lại"><i
+                        class="fa-solid fa-save"></i></button>
+                <button class="st-chatu8-icon-btn" id="ch-rename_test_context_button" title="Sửa đổi tên"><i
+                        class="fa-solid fa-pen"></i></button>
+                <button class="st-chatu8-icon-btn" id="ch-import_test_context_button" title="nhập khẩu"><i
+                        class="fa-solid fa-file-import"></i></button>
+                <button class="st-chatu8-icon-btn" id="ch-export_test_context_button" title="Xuất khẩu"><i
+                        class="fa-solid fa-file-export"></i></button>
+                <button class="st-chatu8-icon-btn" id="ch-export_all_test_context_button" title="Xuất tất cả"><i
+                        class="fa-solid fa-file-zipper"></i></button>
+                <button class="st-chatu8-icon-btn danger" id="ch-delete_test_context_button" title="Xóa"><i
+                        class="fa-solid fa-trash"></i></nút>
+            </div>
+        </div>
+
+        <!-- Thêm nút nhập -->
+        <lớp div="st-chatu8-add-entry-area">
+            <button class="st-chatu8-btn st-chatu8-add-entry-btn" id="ch-add_preset_entry_button">
+                <i class="fa-solid fa-plus"></i>Thêm mục
+            </button>
+        </div>
+
+        <!-- Vùng chứa danh sách mặt hàng - có thể cuộn -->
+        <div id="ch-preset-entries-container" class="st-chatu8-preset-entries-container">
+            <!-- Các mục sẽ được tạo động bởi JS -->
+        </div>
+    </div>
+
+    <lớp div="st-chatu8-settings-section">
+        <!-- Cấu hình lịch sử bối cảnh -->
+        <h4>Lịch sử bối cảnh</h4>
+        <lớp div="st-chatu8-field">
+            <label for="ch-llm_history_depth">Gửi các lớp lịch sử</label>
+            <lớp div="st-chatu8-range-container">
+                <input class="st-chatu8-range-slider" type="range" id="ch-llm_history_depth" min="0" max="20"
+                    step="1" value="2">
+                <input class="st-chatu8-range-input" type="number" id="ch-llm_history_depth_value"
+                    data-for="ch-llm_history_depth" min="0" max="20" step="1" value="2">
+            </div>
+        </div>
+        <p style="font-size: 12px; color: var(--st-chatu8-text-secondary); margin-top: 8px;">
+            Đặt số lượng lớp hội thoại lịch sử được gửi tới LLM. 0 có nghĩa là không có lịch sử nào được gửi.
+        </p>
+        <lớp div="st-chatu8-field" style="margin-top: 16px;">
+            <label for="ch-tagthink_echo">Tiếng vang của suy nghĩ gắn thẻ</label>
+            <lớp div="st-chatu8-toggle">
+                <input id="ch-tagthink_echo" type="checkbox" />
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <p style="font-size: 12px; color: var(--st-chatu8-text-secondary); margin-top: 8px;">
+            Khi bật, nội dung suy nghĩ trong <imgthink> được hiển thị trước thẻ hình ảnh (không bao gồm các dòng biểu thức chính quy).
+        </p>
+        <lớp div="st-chatu8-field" style="margin-top: 16px;">
+            <label for="ch-history_keep_image_tag">Văn bản lịch sử giữ lại nhãn <image></label>
+            <lớp div="st-chatu8-toggle">
+                <input id="ch-history_keep_image_tag" type="checkbox" />
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <p style="font-size: 12px; color: var(--st-chatu8-text-secondary); margin-top: 8px;">
+            Nó chỉ có hiệu lực đối với yêu cầu "Tạo hình ảnh văn bản": sau khi được bật, các khối <image>...</image> trong các thông báo lịch sử sẽ được giữ lại làm tham chiếu; văn bản hiện tại vẫn sẽ được làm sạch hoàn toàn theo quy định thông thường.
+        </p>
+        <lớp div="st-chatu8-field" style="margin-top: 16px;">
+            <label for="ch-llm_retry_count">Thử lại lỗi LLM</label>
+            <lớp div="st-chatu8-range-container">
+                <input class="st-chatu8-range-slider" type="range" id="ch-llm_retry_count" min="0" max="5"
+                    step="1" value="0">
+                <input class="st-chatu8-range-input" type="number" id="ch-llm_retry_count_value"
+                    data-for="ch-llm_retry_count" min="0" max="5" step="1" value="0">
+            </div>
+        </div>
+        <p style="font-size: 12px; color: var(--st-chatu8-text-secondary); margin-top: 8px;">
+            Số lần thử lại tự động (cách nhau 2 giây) khi LLM trả về lỗi chẳng hạn như phản hồi trống hoặc 429. 0 có nghĩa là không thử lại.
+        </p>
+    </div>
+
+    <lớp div="st-chatu8-settings-section">
+        <!-- Cấu hình loại yêu cầu -->
+        <h4>Cấu hình loại yêu cầu</h4>
+        <p phong cách="font-size: 12px; color: var(--st-chatu8-text-secondary); margin-bottom: 12px;">
+            Chọn cấu hình API và cài đặt trước ngữ cảnh để sử dụng cho từng loại trong số ba loại yêu cầu.
+        </p>
+
+        <!-- Lưới thẻ loại yêu cầu -->
+        <lớp div="st-chatu8-request-cards-grid">
+            <!-- Tạo hình ảnh văn bản -->
+            <lớp div="st-chatu8-request-card">
+                <div class="st-chatu8-request-card-header">
+                    <i class="fa-solid fa-image"></i> Tạo hình ảnh văn bản
+                </div>
+                <lớp div="st-chatu8-request-card-selects">
+                    <div class="st-chatu8-request-card-select-item">
+                        <label for="ch-llm_image_gen_api_select">Cấu hình API</label>
+                        <chọn id="ch-llm_image_gen_api_select" class="st-chatu8-select"></select>
+                    </div>
+                    <div class="st-chatu8-request-card-select-item">
+                        <label for="ch-llm_image_gen_context_select">Ngữ cảnh đặt trước</label>
+                        <chọn id="ch-llm_image_gen_context_select" class="st-chatu8-select"></chọn>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thiết kế nhân vật/trang phục -->
+            <lớp div="st-chatu8-request-card">
+                <div class="st-chatu8-request-card-header">
+                    <i class="fa-solid fa-palette"></i>Thiết kế nhân vật/trang phục
+                </div>
+                <lớp div="st-chatu8-request-card-selects">
+                    <div class="st-chatu8-request-card-select-item">
+                        <label for="ch-llm_char_design_api_select">Cấu hình API</label>
+                        <chọn id="ch-llm_char_design_api_select" class="st-chatu8-select"></select>
+                    </div>
+                    <div class="st-chatu8-request-card-select-item">
+                        <label for="ch-llm_char_design_context_select">Ngữ cảnh đặt trước</label>
+                        <chọn id="ch-llm_char_design_context_select" class="st-chatu8-select"></chọn>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hiển thị nhân vật/trang phục -->
+            <lớp div="st-chatu8-request-card">
+                <div class="st-chatu8-request-card-header">
+                    <i class="fa-solid fa-user"></i>Hiển thị nhân vật/trang phục
+                </div>
+                <lớp div="st-chatu8-request-card-selects">
+                    <div class="st-chatu8-request-card-select-item">
+                        <label for="ch-llm_char_display_api_select">Cấu hình API</label>
+                        <chọn id="ch-llm_char_display_api_select" class="st-chatu8-select"></select>
+                    </div>
+                    <div class="st-chatu8-request-card-select-item">
+                        <label for="ch-llm_char_display_context_select">Ngữ cảnh đặt trước</label>
+                        <chọn id="ch-llm_char_display_context_select" class="st-chatu8-select"></chọn>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sửa đổi nhân vật/trang phục -->
+            <lớp div="st-chatu8-request-card">
+                <div class="st-chatu8-request-card-header">
+                    <i class="fa-solid fa-pen-to-square"></i>Sửa đổi nhân vật/trang phục
+                </div>
+                <lớp div="st-chatu8-request-card-selects">
+                    <div class="st-chatu8-request-card-select-item">
+                        <label for="ch-llm_char_modify_api_select">Cấu hình API</label>
+                        <chọn id="ch-llm_char_modify_api_select" class="st-chatu8-select"></select>
+                    </div>
+                    <div class="st-chatu8-request-card-select-item">
+                        <label for="ch-llm_char_modify_context_select">Ngữ cảnh đặt trước</label>
+                        <chọn id="ch-llm_char_modify_context_select" class="st-chatu8-select"></chọn>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dịch -->
+            <lớp div="st-chatu8-request-card">
+                <div class="st-chatu8-request-card-header">
+                    <i class="fa-solid fa-language"></i>Dịch thuật
+                </div>
+                <lớp div="st-chatu8-request-card-selects">
+                    <div class="st-chatu8-request-card-select-item">
+                        <label for="ch-llm_translation_api_select">Cấu hình API</label>
+                        <chọn id="ch-llm_translation_api_select" class="st-chatu8-select"></select>
+                    </div>
+                    <div class="st-chatu8-request-card-select-item">
+                        <label for="ch-llm_translation_context_select">Ngữ cảnh đặt trước</label>
+                        <chọn id="ch-llm_translation_context_select" class="st-chatu8-select"></chọn>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sửa đổi thẻ -->
+            <lớp div="st-chatu8-request-card">
+                <div class="st-chatu8-request-card-header">
+                    <i class="fa-solid fa-tags"></i> Sửa đổi thẻ
+                </div>
+                <lớp div="st-chatu8-request-card-selects">
+                    <div class="st-chatu8-request-card-select-item">
+                        <label for="ch-llm_tag_modify_api_select">Cấu hình API</label>
+                        <chọn id="ch-llm_tag_modify_api_select" class="st-chatu8-select"></select>
+                    </div>
+                    <div class="st-chatu8-request-card-select-item">
+                        <label for="ch-llm_tag_modify_context_select">Ngữ cảnh đặt trước</label>
+                        <chọn id="ch-llm_tag_modify_context_select" class="st-chatu8-select"></chọn>
+                    </div>
+                </div>
+            </div>
+
+            <!--Trợ lý Chiehime -->
+            <lớp div="st-chatu8-request-card st-chatu8-request-card--accent-pink">
+                <div class="st-chatu8-request-card-header">
+                    <i class="fa-solid fa-robot"></i>Trợ lý Chiehime
+                </div>
+                <p lớp="st-chatu8-request-card-desc">
+                    Khi "Tùy chỉnh (Mặc định LLM)" được chọn trong "Ký tự mặc định" trên bảng Chiehime, mặc định theo ngữ cảnh được định cấu hình ở đây sẽ được sử dụng.
+                </p>
+                <lớp div="st-chatu8-request-card-selects">
+                    <div class="st-chatu8-request-card-select-item">
+                        <nhãn>Cấu hình API</label>
+                        <span lớp="st-chatu8-request-card-hint" style="font-size: 12px; color: var(--st-chatu8-text-secondary); padding: 6px 0;">Sử dụng "Chieji AI" để thiết lập cấu hình của bảng điều khiển</span>
+                    </div>
+                    <lớp div="st-chatu8-request-card-select-item">
+                        <label for="ch-llm_ai_assistant_context_select">Ngữ cảnh đặt trước</label>
+                        <chọn id="ch-llm_ai_assistant_context_select" class="st-chatu8-select"></chọn>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tạo nhân vật -->
+            <lớp div="st-chatu8-request-card st-chatu8-request-card--accent-purple">
+                <div class="st-chatu8-request-card-header">
+                    <i class="fa-solid fa-id-card"></i> Tạo nhân vật
+                </div>
+                <p lớp="st-chatu8-request-card-desc">
+                    Dữ liệu ký tự (bao gồm cài đặt du hành thời gian) được tạo tự động thông qua LLM và kết quả sẽ được điền vào từng trường của giao diện quản lý ký tự.
+                </p>
+                <lớp div="st-chatu8-request-card-selects">
+                    <div class="st-chatu8-request-card-select-item">
+                        <label for="ch-llm_persona_gen_api_select">Cấu hình API</label>
+                        <chọn id="ch-llm_persona_gen_api_select" class="st-chatu8-select"></select>
+                    </div>
+                    <div class="st-chatu8-request-card-select-item">
+                        <label for="ch-llm_persona_gen_context_select">Ngữ cảnh đặt trước</label>
+                        <chọn id="ch-llm_persona_gen_context_select" class="st-chatu8-select"></chọn>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tạo nhân vật người dùng -->
+            <lớp div="st-chatu8-request-card st-chatu8-request-card--accent-blue">
+                <div class="st-chatu8-request-card-header">
+                    <i class="fa-solid fa-user"></i> Tạo hồ sơ người dùng
+                </div>
+                <p lớp="st-chatu8-request-card-desc">
+                    Dữ liệu nhân vật người dùng được tạo tự động thông qua LLM (không có cài đặt du hành thời gian), phù hợp với cài đặt nhân vật của người chơi.
+                </p>
+                <lớp div="st-chatu8-request-card-selects">
+                    <div class="st-chatu8-request-card-select-item">
+                        <label for="ch-llm_user_persona_gen_api_select">Cấu hình API</label>
+                        <chọn id="ch-llm_user_persona_gen_api_select" class="st-chatu8-select"></select>
+                    </div>
+                    <div class="st-chatu8-request-card-select-item">
+                        <label for="ch-llm_user_persona_gen_context_select">Ngữ cảnh đặt trước</label>
+                        <chọn id="ch-llm_user_persona_gen_context_select" class="st-chatu8-select"></chọn>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tóm tắt cuộc trò chuyện -->
+            <lớp div="st-chatu8-request-card st-chatu8-request-card--accent-teal">
+                <div class="st-chatu8-request-card-header">
+                    <i class="fa-solid fa-layer-group"></i>Tóm tắt cuộc trò chuyện
+                </div>
+                <p lớp="st-chatu8-request-card-desc">
+                    Cấu hình LLM và cài đặt trước ngữ cảnh để tạo tóm tắt trò chuyện. Phần tóm tắt được viết dưới dạng nhật ký ngôi thứ nhất của nhân vật.
+                </p>
+                <lớp div="st-chatu8-request-card-selects">
+                    <div class="st-chatu8-request-card-select-item">
+                        <label for="ch-llm_summary_api_select">Cấu hình API</label>
+                        <chọn id="ch-llm_summary_api_select" class="st-chatu8-select"></select>
+                    </div>
+                    <div class="st-chatu8-request-card-select-item">
+                        <label for="ch-llm_summary_context_select">Ngữ cảnh đặt trước</label>
+                        <chọn id="ch-llm_summary_context_select" class="st-chatu8-select"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="st-chatu8-settings-section">
+        <!-- Công cụ kiểm tra -->
+        <h4>Công cụ kiểm tra</h4>
+        <!-- Nút kiểm tra và kết quả -->
+        <kiểu div="text-align: center; margin: 20px 0;">
+            <button class="st-chatu8-btn" id="ch-llm_test_button">
+                <i class="fa-solid fa-paper-plane"></i>
+                Gửi yêu cầu kiểm tra
+            </button>
+        </div>
+        <lớp div="st-chatu8-field-col">
+            <label for="ch-llm_combined_prompt">Các từ gợi ý kết hợp</label>
+            <id vùng văn bản="ch-llm_combined_prompt" class="st-chatu8-textarea" rows="4" readonly
+                placeholder="Dưới đây là những lời nhắc cuối cùng được kết hợp dựa trên ngữ cảnh và yêu cầu bên ngoài..."></textarea>
+        </div>
+        <div class="st-chatu8-field-col">
+            <label for="ch-llm_test_result">Trả lời AI</label>
+            <id vùng văn bản="ch-llm_test_result" class="st-chatu8-textarea" rows="8" readonly
+                placeholder="Sau khi nhấp vào nút ở trên, câu trả lời của AI sẽ được hiển thị ở đây..."></textarea>
+        </div>
+    </div>
+</div>
